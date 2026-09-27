@@ -1,4 +1,7 @@
 \documentclass[12pt,a4paper,oneside]{memoir}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -10,128 +13,142 @@
 \usepackage{xcolor}
 \usepackage{eso-pic}
 
-\geometry{a4paper, left=1.25in, right=1in, top=1in, bottom=1in}
+% Margins & 1.5 Spacing
+\geometry{a4paper, left=1.25in, right=1in, top=0.85in, bottom=0.85in}
+\OnehalfSpacing
 
-% True 1.5 line spacing (explicit multiplier)
-\setlinespacing{1.5}
-
-% Prevent hyphenation breaks across lines: send complete words to next line
-\tolerance=9999
-\emergencystretch=3em
+% Suppress hyphenation completely (no words split with a hyphen across lines)
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
+\righthyphenmin=62
+\lefthyphenmin=62
+\sloppy
 
-% Remove undocumented extra vertical gap between chapters in List of Figures and List of Tables
+% Chapter Styling matching mini.pdf:
+% "Chapter <num>" is RIGHT-ALIGNED, Title is CENTER-ALIGNED
+\makechapterstyle{vtucompact}{%
+  \renewcommand*{\chapterheadstart}{\vspace*{-0.2cm}}
+  \setlength{\beforechapskip}{0pt}
+  \setlength{\midchapskip}{0.1cm}
+  \setlength{\afterchapskip}{0.6cm}
+  % For numbered chapters: Right-aligned "Chapter X"
+  \renewcommand*{\printchaptername}{%
+    \raggedleft{\fontsize{15pt}{18pt}\selectfont\textbf{\chaptername}}%
+  }
+  \renewcommand*{\chapternamenum}{~}
+  \renewcommand*{\printchapternum}{%
+    {\fontsize{15pt}{18pt}\selectfont\textbf{\thechapter}}\par
+  }
+  \renewcommand*{\afterchapternum}{\vspace{0.15cm}}
+  % For unnumbered chapters (Contents, Lists, etc.): no chapter label
+  \renewcommand*{\printchapternonum}{}
+  % Chapter Title: Centered 18pt bold
+  \renewcommand*{\printchaptertitle}[1]{%
+    \centering{\fontsize{18pt}{22pt}\selectfont\textbf{##1}}\par
+  }
+}
+\chapterstyle{vtucompact}
+
 \renewcommand*{\insertchapterspace}{}
 
-% Section and Heading Font Size Configuration:
-% - Main Body Text: 12pt (via documentclass)
-% - Section Heading: 16pt (\fontsize{16pt}{20pt}\selectfont)
-% - SubSection Heading: 14pt (\fontsize{14pt}{18pt}\selectfont)
+% Typography Scale
+% Chapter Title: 18pt | Section: 16pt | Subheading: 14pt | Body: 12pt
 \setsecheadstyle{\fontsize{16pt}{20pt}\bfseries\raggedright}
 \setsubsecheadstyle{\fontsize{14pt}{18pt}\bfseries\raggedright}
 \setsubsubsecheadstyle{\fontsize{12pt}{15pt}\bfseries\raggedright}
 
-% Match Mini Report Chapter Heading Format:
-%                 Chapter <number> (Right-aligned)
-%                 <blank line>
-%            <Chapter Title> (Centered)
-\makechapterstyle{sdmitreport}{%
-  \setlength{\beforechapskip}{0pt}
-  \setlength{\midchapskip}{10pt}
-  \setlength{\afterchapskip}{18pt}
-  \renewcommand*{\chapterheadstart}{\vspace*{-30pt}}
-  \renewcommand*{\printchaptername}{\raggedleft\fontsize{18pt}{22pt}\bfseries Chapter}
-  \renewcommand*{\chapternamenum}{\space}
-  \renewcommand*{\printchapternum}{\fontsize{18pt}{22pt}\bfseries\thechapter}
-  \renewcommand*{\afterchapternum}{\par\nobreak\vspace{\midchapskip}}
-  \renewcommand*{\printchaptertitle}[1]{\centering\fontsize{18pt}{22pt}\bfseries ##1}
-  \renewcommand*{\afterchaptertitle}{\par\nobreak\vspace{\afterchapskip}}
-}
-\chapterstyle{sdmitreport}
-
-% Solid Black Border for the First 5 Preliminary Pages (matching Document 2)
-\newcommand\BackgroundFrame{%
-  \put(0,0){%
-    \parbox[b][\paperheight]{\paperwidth}{%
-      \vfill
-      \centering
-      {%
-        \setlength{\fboxrule}{1.5pt}%
-        \setlength{\fboxsep}{0pt}%
-        \framebox[\dimexpr\paperwidth-28mm\relax][c]{%
-          \rule{0pt}{\dimexpr\paperheight-28mm\relax}%
-        }%
-      }%
-      \vfill
+% Heavy Solid Black Border for the First 5 Pages
+\newcommand\DrawSolidBorder{%
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{%
+      \color{black}%
+      \linethickness{2.5pt}%
+      \put(26,26){\framebox(542,790){}}%
     }%
   }%
 }
 
-\makepagestyle{sdmit}
-\makeoddhead{sdmit}{}{\small\leftmark}{}
-\makeevenhead{sdmit}{}{\small\leftmark}{}
-\makeoddfoot{sdmit}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
-\makeevenfoot{sdmit}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
-\pagestyle{sdmit}
-
-\renewcommand{\chaptername}{Chapter}
+% Code Listing Styling
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.98,0.98,0.98}
 
 \lstdefinelanguage{JavaScript}{
-  keywords={const, let, var, if, else, for, while, return, function, class},
+  keywords={typeof, new, true, false, catch, function, return, null, switch, var, if, in, while, do, else, case, break, const, let, for, continue, async, await, try, finally, default},
   keywordstyle=\color{blue}\bfseries,
-  ndkeywords={export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{gray}\bfseries,
   identifierstyle=\color{black},
   sensitive=false,
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
+  commentstyle=\color{codegray}\ttfamily,
+  stringstyle=\color{codepurple}\ttfamily,
   morestring=[b]',
   morestring=[b]"
 }
+
 \lstdefinestyle{mystyle}{
-  basicstyle=\ttfamily\footnotesize,
-  breakatwhitespace=false,
-  breaklines=true,
-  captionpos=b,
-  keepspaces=true,
-  numbers=left,
-  numbersep=5pt,
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=2,
-  frame=single
+    language=JavaScript,
+    backgroundcolor=\color{backcolour},   
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=6pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single
 }
 \lstset{style=mystyle}
 
+% Running footers for main matter
+\makepagestyle{vtufoot}
+\makeevenfoot{vtufoot}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
+\makeoddfoot{vtufoot}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
+\makeevenhead{vtufoot}{}{}{}
+\makeoddhead{vtufoot}{}{}{}
+
+\setsecnumdepth{subsubsection}
+\settocdepth{subsection}
+
 \begin{document}
+
+% FRONT MATTER
 \frontmatter
+\pagestyle{plain}
 
-% Enable border on the first five pages (Title, Certificate, Declaration, Acknowledgments, Abstract)
-\AddToShipoutPictureBG{\BackgroundFrame}
-
+% 1. Title Page (Border 1)
+\DrawSolidBorder
 \input{title}
 \clearpage
 
+% 2. Certificate (Border 2)
+\DrawSolidBorder
 \input{certificate}
 \clearpage
 
+% 3. Declaration (Border 3)
+\DrawSolidBorder
 \input{declaration}
 \clearpage
 
+% 4. Acknowledgments (Border 4)
+\DrawSolidBorder
 \input{acknowledge}
 \clearpage
 
+% 5. Abstract (Border 5)
+\DrawSolidBorder
 \input{abstract}
 \clearpage
 
-% Disable border for Table of Contents, Lists, Acronyms, and Main Chapters
-\ClearShipoutPictureBG
-
-\tableofcontents
+% Preliminary lists (inherit identical centered style and top spacing)
+\tableofcontents*
 \clearpage
 
 \listoffigures
@@ -143,13 +160,97 @@
 \input{acronyms}
 \clearpage
 
+% MAIN MATTER
 \mainmatter
+\pagestyle{vtufoot}
 \input{main_chapters}
 
+% BACK MATTER
 \backmatter
 \bibliographystyle{IEEEtran}
 \bibliography{test_bib}
+\clearpage
 
-\input{closing_sections}
+\chapter*{Plagiarism Report}
+\addcontentsline{toc}{chapter}{Plagiarism Report}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{images/plagiarism_report}
+\end{figure}
+\clearpage
+
+\chapter*{Guide Profile}
+\addcontentsline{toc}{chapter}{Guide Profile}
+\begin{center}
+\begin{tabular}{|m{0.38\textwidth}|m{0.57\textwidth}|}
+\hline
+\begin{center}
+\includegraphics[width=0.3\textwidth]{images/guide_photo} \\[0.2cm]
+\textbf{Mr. Jagadeesha M} \\
+Assistant Professor \\
+and Project Guide
+\end{center}
+&
+\textbf{Name: Prof. Jagadeesha M} \newline\newline
+He is presently working as an Assistant Professor with 17 years of teaching experience. He holds a BE in ECE and an M.Tech in VLSI Design and has taught subjects in both ECE and ISE. He is currently pursuing a Ph.D. in deep learning and has published several research papers in reputed journals and conferences. His academic mentorship has guided numerous undergraduate projects in full-stack engineering, artificial intelligence, and intelligent computing systems. \\
+\hline
+\end{tabular}
+\end{center}
+\clearpage
+
+\chapter*{Student Profile}
+\addcontentsline{toc}{chapter}{Student Profile}
+\begin{center}
+\begin{tabular}{|m{0.38\textwidth}|m{0.57\textwidth}|}
+\hline
+\begin{center}
+\includegraphics[width=0.28\textwidth]{images/student1_photo}
+\end{center}
+&
+\textbf{Name}: Eshan S N \newline
+\textbf{USN}: 4SU23IS013 \newline
+\textbf{Address}: Belthangady, Dakshina Kannada - 574214 \newline
+\textbf{E-mail ID}: 23c13@sdmit.in \newline
+\textbf{Contact Number}: 85468 58448 \\
+\hline
+\begin{center}
+\includegraphics[width=0.28\textwidth]{images/student2_photo}
+\end{center}
+&
+\textbf{Name}: Sai Dhanush \newline
+\textbf{USN}: 4SU23IS041 \newline
+\textbf{Address}: Ujire, Dakshina Kannada - 574228 \newline
+\textbf{E-mail ID}: 23c41@sdmit.in \newline
+\textbf{Contact Number}: 77604 08825 \\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+\begin{center}
+\begin{tabular}{|m{0.38\textwidth}|m{0.57\textwidth}|}
+\hline
+\begin{center}
+\includegraphics[width=0.28\textwidth]{images/student3_photo}
+\end{center}
+&
+\textbf{Name}: Shridhar Sharatkumar Hegde \newline
+\textbf{USN}: 4SU23IS046 \newline
+\textbf{Address}: Siddapura - 581355 \newline
+\textbf{E-mail ID}: 23c47@sdmit.in \newline
+\textbf{Contact Number}: 9449146533 \\
+\hline
+\begin{center}
+\includegraphics[width=0.28\textwidth]{images/student4_photo}
+\end{center}
+&
+\textbf{Name}: Tejaswi Ananth Bhat \newline
+\textbf{USN}: 4SU23IS053 \newline
+\textbf{Address}: Yellapur - 581359 \newline
+\textbf{E-mail ID}: 23c54@sdmit.in \newline
+\textbf{Contact Number}: 8217835186 \\
+\hline
+\end{tabular}
+\end{center}
 
 \end{document}
