@@ -1,0 +1,155 @@
+\documentclass[12pt,a4paper,oneside]{memoir}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{eso-pic}
+
+\geometry{a4paper, left=1.25in, right=1in, top=1in, bottom=1in}
+
+% True 1.5 line spacing (explicit multiplier)
+\setlinespacing{1.5}
+
+% Prevent hyphenation breaks across lines: send complete words to next line
+\tolerance=9999
+\emergencystretch=3em
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% Remove undocumented extra vertical gap between chapters in List of Figures and List of Tables
+\renewcommand*{\insertchapterspace}{}
+
+% Section and Heading Font Size Configuration:
+% - Main Body Text: 12pt (via documentclass)
+% - Section Heading: 16pt (\fontsize{16pt}{20pt}\selectfont)
+% - SubSection Heading: 14pt (\fontsize{14pt}{18pt}\selectfont)
+\setsecheadstyle{\fontsize{16pt}{20pt}\bfseries\raggedright}
+\setsubsecheadstyle{\fontsize{14pt}{18pt}\bfseries\raggedright}
+\setsubsubsecheadstyle{\fontsize{12pt}{15pt}\bfseries\raggedright}
+
+% Match Mini Report Chapter Heading Format:
+%                 Chapter <number> (Right-aligned)
+%                 <blank line>
+%            <Chapter Title> (Centered)
+\makechapterstyle{sdmitreport}{%
+  \setlength{\beforechapskip}{0pt}
+  \setlength{\midchapskip}{10pt}
+  \setlength{\afterchapskip}{18pt}
+  \renewcommand*{\chapterheadstart}{\vspace*{-30pt}}
+  \renewcommand*{\printchaptername}{\raggedleft\fontsize{18pt}{22pt}\bfseries Chapter}
+  \renewcommand*{\chapternamenum}{\space}
+  \renewcommand*{\printchapternum}{\fontsize{18pt}{22pt}\bfseries\thechapter}
+  \renewcommand*{\afterchapternum}{\par\nobreak\vspace{\midchapskip}}
+  \renewcommand*{\printchaptertitle}[1]{\centering\fontsize{18pt}{22pt}\bfseries ##1}
+  \renewcommand*{\afterchaptertitle}{\par\nobreak\vspace{\afterchapskip}}
+}
+\chapterstyle{sdmitreport}
+
+% Solid Black Border for the First 5 Preliminary Pages (matching Document 2)
+\newcommand\BackgroundFrame{%
+  \put(0,0){%
+    \parbox[b][\paperheight]{\paperwidth}{%
+      \vfill
+      \centering
+      {%
+        \setlength{\fboxrule}{1.5pt}%
+        \setlength{\fboxsep}{0pt}%
+        \framebox[\dimexpr\paperwidth-28mm\relax][c]{%
+          \rule{0pt}{\dimexpr\paperheight-28mm\relax}%
+        }%
+      }%
+      \vfill
+    }%
+  }%
+}
+
+\makepagestyle{sdmit}
+\makeoddhead{sdmit}{}{\small\leftmark}{}
+\makeevenhead{sdmit}{}{\small\leftmark}{}
+\makeoddfoot{sdmit}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
+\makeevenfoot{sdmit}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
+\pagestyle{sdmit}
+
+\renewcommand{\chaptername}{Chapter}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={const, let, var, if, else, for, while, return, function, class},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+\lstdefinestyle{mystyle}{
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  frame=single
+}
+\lstset{style=mystyle}
+
+\begin{document}
+\frontmatter
+
+% Enable border on the first five pages (Title, Certificate, Declaration, Acknowledgments, Abstract)
+\AddToShipoutPictureBG{\BackgroundFrame}
+
+\input{title}
+\clearpage
+
+\input{certificate}
+\clearpage
+
+\input{declaration}
+\clearpage
+
+\input{acknowledge}
+\clearpage
+
+\input{abstract}
+\clearpage
+
+% Disable border for Table of Contents, Lists, Acronyms, and Main Chapters
+\ClearShipoutPictureBG
+
+\tableofcontents
+\clearpage
+
+\listoffigures
+\clearpage
+
+\listoftables
+\clearpage
+
+\input{acronyms}
+\clearpage
+
+\mainmatter
+\input{main_chapters}
+
+\backmatter
+\bibliographystyle{IEEEtran}
+\bibliography{test_bib}
+
+\input{closing_sections}
+
+\end{document}
