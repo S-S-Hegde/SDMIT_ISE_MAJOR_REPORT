@@ -8,12 +8,11 @@ VeriProof is designed, architected and built as a complete full-stack candidate 
 
 \section{Problem Statement}
 Existing recruitment platforms suffer from three severe, interrelated failure modes:
-
-\textbf{1. Unverifiable Portfolios \& Code Claim Fraud}: Candidates frequently claim deep full-stack or systems experience based on cloned open-source projects or template repositories without genuine code comprehension.
-
-\textbf{2. Vulnerability to Generative AI Assistance}: Traditional online exams rely on static, purely conceptual multiple-choice items (e.g., definitions, syntax lookups). In unsupervised environments, candidates query search engines and LLMs during testing, inflating scores without possessing practical troubleshooting competence.
-
-\textbf{3. Lack of Nuanced Forensic Telemetry}: Current proctoring solutions rely on crude binary disqualification triggers (e.g., webcam disconnects) rather than nuanced multi-parametric signals such as deceptive trap question responses, confidence calibration divergence, and response time distributions.
+\begin{enumerate}
+    \item \textbf{Unverifiable Portfolios \& Code Claim Fraud}: Candidates frequently claim deep full-stack or systems experience based on cloned open-source projects or template repositories without genuine code comprehension.
+    \item \textbf{Vulnerability to Generative AI Assistance}: Traditional online exams rely on static, purely conceptual multiple-choice items (e.g., definitions, syntax lookups). In unsupervised environments, candidates query search engines and LLMs during testing, inflating scores without possessing practical troubleshooting competence.
+    \item \textbf{Lack of Nuanced Forensic Telemetry}: Current proctoring solutions rely on crude binary disqualification triggers (e.g., webcam disconnects) rather than nuanced multi-parametric signals such as deceptive trap question responses, confidence calibration divergence, and response time distributions.
+\end{enumerate}
 
 \section{Objectives}
 The core objectives of the VeriProof platform are:
@@ -50,34 +49,35 @@ The remainder of this report is organized as follows:
     \item \textbf{Closing Sections}: Includes Bibliography, Plagiarism Report, Guide Profile, and Student Profile.
 \end{itemize}
 
+\clearpage
 \chapter{Literature Survey}
 \section{Introduction}
 Technological advancements in automated talent acquisition, evidence-based candidate assessment, and anti-fraud verification have generated significant academic research. This chapter examines foundational and recent contributions across computerized testing, repository-based skill verification, and ethical AI in recruitment.
 
 \section{Review of Existing Work}
-Marinin et al. \cite{Marinin2025} proposed an electronic portfolio framework for managing student competencies and achievements within university career offices. Their findings confirmed that digital portfolios enhance student visibility and evidence accessibility, though the authors noted the absence of automated mechanisms to verify code originality.
+Marinin et al. [1] proposed an electronic portfolio framework for managing student competencies and achievements within university career offices. Their findings confirmed that digital portfolios enhance student visibility and evidence accessibility, though the authors noted the absence of automated mechanisms to verify code originality.
 
-Vaishampayan et al. \cite{Brown2026} investigated evidence-based technical hiring through GitHub repository analysis and resume matching. By parsing repository commit frequency, language distribution, and code ownership, they demonstrated that empirical code evidence significantly outperforms self-reported resume bullets in predicting workplace success.
+Vaishampayan et al. [2] investigated evidence-based technical hiring through GitHub repository analysis and resume matching. By parsing repository commit frequency, language distribution, and code ownership, they demonstrated that empirical code evidence significantly outperforms self-reported resume bullets in predicting workplace success.
 
-Mujtaba and Mahapatra \cite{Mujtaba2024} analyzed algorithmic fairness, transparency, and bias mitigation in AI-driven recruitment platforms. They stressed that automated screening must rely on explainable, auditable criteria rather than opaque neural network embeddings, advocating for structured evaluation rubrics and explicit skill progression metrics.
+Mujtaba and Mahapatra [3] analyzed algorithmic fairness, transparency, and bias mitigation in AI-driven recruitment platforms. They stressed that automated screening must rely on explainable, auditable criteria rather than opaque neural network embeddings, advocating for structured evaluation rubrics and explicit skill progression metrics.
 
-Akram et al. \cite{Akram2024} developed deep learning architectures incorporating BERT and RoBERTa models to detect Online Recruitment Fraud (ORF). Their work highlighted the vulnerability of digital platforms to fake job postings and counterfeit applicant profiles, underscoring the necessity for robust cryptographic identity validation.
+Akram et al. [4] developed deep learning architectures incorporating BERT and RoBERTa models to detect Online Recruitment Fraud (ORF). Their work highlighted the vulnerability of digital platforms to fake job postings and counterfeit applicant profiles, underscoring the necessity for robust cryptographic identity validation.
 
-Lebopa et al. \cite{Lebopa2025} developed an information verification system combining Artificial Neural Networks (ANN) and Random Forest (RF) classifiers to intercept credential fraud during corporate onboarding, demonstrating that automated verification drastically reduces administrative verification overhead.
+Lebopa et al. [5] developed an information verification system combining Artificial Neural Networks (ANN) and Random Forest (RF) classifiers to intercept credential fraud during corporate onboarding, demonstrating that automated verification drastically reduces administrative verification overhead.
 
-Thandar et al. \cite{Thandar2025} implemented a modern recruitment portal leveraging the MERN stack with secure cloud service integration. Their architecture verified that combining React, Node.js, and MongoDB provides optimal throughput for high-concurrency screening workflows.
+Thandar et al. [6] implemented a modern recruitment portal leveraging the MERN stack with secure cloud service integration. Their architecture verified that combining React, Node.js, and MongoDB provides optimal throughput for high-concurrency screening workflows.
 
-Dugyala et al. \cite{Dugyala2026} presented a smart recruitment system utilizing natural language processing for resume keyword parsing and automated candidate filtering.
+Dugyala et al. [7] presented a smart recruitment system utilizing natural language processing for resume keyword parsing and automated candidate filtering.
 
-Adawiah and Putra \cite{Adawiah2024} examined candidate trust and employer credibility in e-recruitment environments. Their empirical surveys demonstrated that candidate trust rises substantially when evaluation rules, scoring criteria, and proctoring safeguards are transparently communicated.
+Adawiah and Putra [8] examined candidate trust and employer credibility in e-recruitment environments. Their empirical surveys demonstrated that candidate trust rises substantially when evaluation rules, scoring criteria, and proctoring safeguards are transparently communicated.
 
-Agazzi \cite{Agazzi2020} performed usability investigations into digital recruitment interfaces, proving that cognitive fatigue among hiring managers is strongly correlated with poorly organized, unverified candidate profiles.
+Agazzi [9] performed usability investigations into digital recruitment interfaces, proving that cognitive fatigue among hiring managers is strongly correlated with poorly organized, unverified candidate profiles.
 
-Ajayi and Udeh \cite{Ajayi2024} reviewed modern IT recruitment strategies, demonstrating that practical problem-solving assessments, debugging scenarios, and gamified skill trees provide far higher predictive validity than unstructured whiteboard interviews.
+Ajayi and Udeh [10] reviewed modern IT recruitment strategies, demonstrating that practical problem-solving assessments, debugging scenarios, and gamified skill trees provide far higher predictive validity than unstructured whiteboard interviews.
 
-Wainer et al. \cite{Wainer2000} formulated the core principles of Computerized Adaptive Testing (CAT), proving that tailoring question difficulty to estimated candidate ability reduces test length by up to 50\% without sacrificing psychometric precision.
+Wainer et al. [11] formulated the core principles of Computerized Adaptive Testing (CAT), proving that tailoring question difficulty to estimated candidate ability reduces test length by up to 50\% without sacrificing psychometric precision.
 
-Vaswani et al. \cite{Vaswani2017} introduced the Transformer architecture, which forms the computational backbone of modern Large Language Models used in automated scenario generation.
+Vaswani et al. [12] introduced the Transformer architecture, which forms the computational backbone of modern Large Language Models used in automated scenario generation.
 
 \section{Comparative Analysis of Existing Methods}
 Table 2.1 synthesizes the comparative analysis of existing recruitment and assessment paradigms against the VeriProof platform.
@@ -85,17 +85,18 @@ Table 2.1 synthesizes the comparative analysis of existing recruitment and asses
 \begin{table}[H]
 \caption{Comparative Analysis of Technical Recruitment and Assessment Systems}
 \centering
-\begin{tabular}{|p{0.2\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|p{0.2\textwidth}|}
+\small
+\begin{tabular}{|p{0.18\textwidth}|p{0.22\textwidth}|p{0.24\textwidth}|p{0.26\textwidth}|}
 \hline
 \textbf{Approach} & \textbf{Key References} & \textbf{Strengths} & \textbf{Critical Weaknesses} \\
 \hline
-Traditional Portfolios & Marinin et al. \cite{Marinin2025} & Easy candidate submission & No automated verification or anti-plagiarism checks \\
+Traditional Portfolios & Marinin et al. [1] & Easy candidate submission & No automated verification or anti-plagiarism checks \\
 \hline
-GitHub Parsing & Vaishampayan et al. \cite{Brown2026} & Real code evidence & Lacks real-time adaptive scenario evaluation \\
+GitHub Parsing & Vaishampayan et al. [2] & Real code evidence & Lacks real-time adaptive scenario evaluation \\
 \hline
-Fraud Detection & Akram et al. \cite{Akram2024}, Lebopa et al. \cite{Lebopa2025} & High fraud detection precision & Post-hoc offline auditing; no candidate interactive test \\
+Fraud Detection & Akram et al. [4], Lebopa et al. [5] & High fraud detection precision & Post-hoc offline auditing; no candidate interactive test \\
 \hline
-Conventional CAT & Wainer et al. \cite{Wainer2000} & Question efficiency & Requires static, pre-calibrated question banks \\
+Conventional CAT & Wainer et al. [11] & Question efficiency & Requires static, pre-calibrated question banks \\
 \hline
 \textbf{VeriProof Platform} & \textbf{Present Work (2026)} & \textbf{Unified MERN + GitHub + 2-Phase Adaptive Testing + Forensic Trust Scoring} & \textbf{Requires active network connectivity during exam} \\
 \hline
@@ -108,6 +109,7 @@ Prior works address isolated dimensions of technical recruitment: resume parsing
 \section{Summary}
 The literature establishes an urgent industry imperative for evidence-based candidate assessment. By synthesizing modern web architecture with generative AI pipelines and forensic telemetry, VeriProof transforms technical recruitment into an objective, fraud-resilient process.
 
+\clearpage
 \chapter{System Analysis and Requirements}
 \section{Existing System}
 The prevailing recruitment process relies on manual inspection of submitted PDF resumes, self-reported skills on professional networking portals, and static multiple-choice examinations. Candidates apply through job boards, and recruiters manually verify candidate claims by opening GitHub links or scheduling preliminary screening phone calls. Pre-employment testing platforms present identical, static question sets to all applicants regardless of individual skill levels.
@@ -180,13 +182,14 @@ Technical feasibility is validated by the production maturity of the MERN stack 
 \section{Dataset Description}
 The system incorporates standardized software engineering competency datasets spanning four technical categories: Frontend (React, HTML5, CSS3, DOM), Backend (Node.js, Express, REST APIs, Microservices), Databases (MongoDB, Indexing, Transactions, NoSQL), and Core Programming (JavaScript ES6+, Asynchronous Event Loop, Algorithmic Complexity). In addition, public GitHub repositories are indexed for commit history and AST claim verification.
 
+\clearpage
 \chapter{System Design and Methodology}
 \section{System Architecture / Block Diagram}
 The VeriProof system architecture is organized around a multi-tier, event-driven pattern designed for horizontal scalability, modularity, and low-latency interaction. Figure 4.1 illustrates the comprehensive architectural topology.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{images/system_architecture}
+\includegraphics[width=\textwidth]{images/system_architecture}
 \caption{Comprehensive System Architecture of the VeriProof Platform}
 \end{figure}
 
@@ -210,7 +213,7 @@ Figure 4.2 illustrates the procedural flowchart of the VeriProof evaluation and 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{images/system_workflow}
+\includegraphics[width=0.78\textwidth]{images/system_workflow}
 \caption{Workflow for VeriProof System}
 \end{figure}
 
@@ -268,15 +271,15 @@ Accuracy\_k = \frac{\sum_{i=1}^{N_k} C_{k,i}}{N_k} , \quad C_{k,i} \in \{0, 1\}
 \bar{T}\_k = \frac{1}{N_k} \sum_{i=1}^{N_k} T_{k,i}
 \end{equation}
 
-where $C_{k,i}$ is the correctness of question i in skill domain k, $T_{k,i}$ is response duration in milliseconds, and $N_k$ is total questions in domain k.
+where $C_{k,i}$ is the correctness of question $i$ in skill domain $k$, $T_{k,i}$ is response duration in milliseconds, and $N_k$ is total questions in domain $k$.
 
 The candidate is assigned to a competency tier per domain:
 
 \begin{equation}
 Tier\_k = \begin{cases} 
-Foundational, & \text{if } Accuracy\_k < 0.50 \text{ or } TrapFailed\_k = True \\
+Foundational, & \text{if } Accuracy\_k < 0.50 \text{ or } TrapFailed\_k = \text{True} \\
 Intermediate, & \text{if } 0.50 \le Accuracy\_k < 0.75 \\
-Advanced / Expert, & \text{if } Accuracy\_k \ge 0.75 \text{ and } TrapFailed\_k = False 
+Advanced / Expert, & \text{if } Accuracy\_k \ge 0.75 \text{ and } TrapFailed\_k = \text{False} 
 \end{cases}
 \end{equation}
 
@@ -312,10 +315,11 @@ System interactions are structured using UML Class and Sequence models. Key clas
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{images/uml_class}
+\includegraphics[width=\textwidth]{images/uml_class}
 \caption{UML Class and Component Architecture of the VeriProof Engine}
 \end{figure}
 
+\clearpage
 \chapter{Implementation}
 \section{Implementation Environment}
 The VeriProof platform was implemented in a modern JavaScript runtime environment utilizing:
@@ -358,29 +362,30 @@ The Purgatory Intermission mechanism boxes the candidate between Part 1 and Part
 Listing 5.1 exhibits the code-based quality gate implementation from `questionQualityPipeline.js`.
 
 \begin{figure}[H]
+\centering
 \begin{lstlisting}[language=JavaScript]
 // Code snippet from backend/services/questionQualityPipeline.js
 const HEDGING_PATTERNS = [
- "typically", "usually", "in most cases", "depending on",
- "may", "might", "often", "generally", "can sometimes"
+  "typically", "usually", "in most cases", "depending on",
+  "may", "might", "often", "generally", "can sometimes"
 ];
 
 const validateQualityGates = (question, options, correctIndex) => {
- const correctOpt = options[correctIndex];
- for (let i = 0; i < options.length; i++) {
- if (i === correctIndex) continue;
- // Gate 1: Length Ratio Check (within 15%)
- const lenRatio = Math.abs(options[i].length - correctOpt.length) /
- Math.max(options[i].length, correctOpt.length);
- if (lenRatio > 0.15) {
- return { passed: false, reason: "LENGTH_BIAS" };
- }
- // Gate 2: Absurd distractor rejection
- if (ABSURD_PATTERNS.some(pat => pat.test(options[i]))) {
- return { passed: false, reason: "ABSURD_DISTRACTOR" };
- }
- }
- return { passed: true };
+  const correctOpt = options[correctIndex];
+  for (let i = 0; i < options.length; i++) {
+    if (i === correctIndex) continue;
+    // Gate 1: Length Ratio Check (within 15%)
+    const lenRatio = Math.abs(options[i].length - correctOpt.length) /
+      Math.max(options[i].length, correctOpt.length);
+    if (lenRatio > 0.15) {
+      return { passed: false, reason: "LENGTH_BIAS" };
+    }
+    // Gate 2: Absurd distractor rejection
+    if (ABSURD_PATTERNS.some(pat => pat.test(options[i]))) {
+      return { passed: false, reason: "ABSURD_DISTRACTOR" };
+    }
+  }
+  return { passed: true };
 };
 \end{lstlisting}
 \caption{Code Implementation of Automated Quality Gates}
@@ -403,7 +408,7 @@ The frontend interface was inspected and captured live from the running applicat
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{images/landing_page}
+\includegraphics[width=0.88\textwidth]{images/landing_page}
 \caption{VeriProof Landing Page with Proof-of-Skill Hero and Holographic Badges}
 \end{figure}
 
@@ -411,7 +416,7 @@ Figure 5.2 exhibits the primary landing page featuring holographic project badge
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{images/student_dashboard}
+\includegraphics[width=0.88\textwidth]{images/student_dashboard}
 \caption{Student Dashboard with Skill Radar, Project Verifications, and Active Assessments}
 \end{figure}
 
@@ -419,7 +424,7 @@ Figure 5.3 displays the authenticated candidate command center, illustrating ver
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{images/skill_tree}
+\includegraphics[width=0.88\textwidth]{images/skill_tree}
 \caption{Dynamic Skill Tree Visualizer with Node Mastery Progression and Unlocked Milestones}
 \end{figure}
 
@@ -427,7 +432,7 @@ Figure 5.4 presents the interactive Dynamic Skill Tree where technical skills (F
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{images/recruiter_jobs}
+\includegraphics[width=0.88\textwidth]{images/recruiter_jobs}
 \caption{Recruiter Job Roles Manager with Adaptive Testing Configuration and Purgatory Timer}
 \end{figure}
 
@@ -435,15 +440,16 @@ Figure 5.5 shows the Recruiter Job Roles Manager where recruiters upload job des
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{images/recruiter_discovery}
+\includegraphics[width=0.88\textwidth]{images/recruiter_discovery}
 \caption{Recruiter Candidate Discovery Hub with Forensic Trust Score Filters and Dossiers}
 \end{figure}
 
 Figure 5.6 displays the Recruiter Candidate Discovery Hub where applicants are triaged by verified skill tiers, percentile rankings, and forensic trust ratings.
 
-\section{Integration and System Development}
+\section{Integration and System Deployment}
 The frontend was deployed using modern static optimization via Vite, and backend microservices were orchestrated with secure environment variables (`.env`), CORS pre-flight validation, and MongoDB Atlas database clusters.
 
+\clearpage
 \chapter{Results and Discussion}
 \section{Experimental Setup}
 The platform was benchmarked through 100 automated simulation trials across four candidate cohorts: Beginner, Intermediate, Advanced, and Expert. Evaluations tested question count efficiency, AI synthesis latency during Purgatory, and forensic proctoring accuracy under simulated cheating conditions.
@@ -454,7 +460,8 @@ Table 6.1 details functional validation test cases and empirical execution outco
 \begin{table}[H]
 \caption{System Test Cases and Empirical Outcomes}
 \centering
-\begin{tabular}{|l|p{0.3\textwidth}|p{0.3\textwidth}|l|}
+\small
+\begin{tabular}{|p{0.14\textwidth}|p{0.32\textwidth}|p{0.36\textwidth}|p{0.10\textwidth}|}
 \hline
 \textbf{Test ID} & \textbf{Test Scenario} & \textbf{Expected Outcome} & \textbf{Status} \\
 \hline
@@ -486,7 +493,7 @@ Figure 6.1 demonstrates the empirical findings regarding question efficiency and
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{images/performance_eval}
+\includegraphics[width=\textwidth]{images/performance_eval}
 \caption{Assessment Efficiency and Forensic Trust Score Decay Analysis}
 \end{figure}
 
@@ -511,6 +518,7 @@ All primary project objectives were comprehensively realized:
 \section{Discussion}
 The synergy between the 2-part adaptive exam and the Purgatory timebox solves the critical vulnerability of online testing. Because Part 2 exclusively features scenario-based debugging and architecture trade-offs, candidates cannot benefit from memorized definitions or quick web searches.
 
+\clearpage
 \chapter{Conclusion and Future Scope}
 \section{Conclusion}
 The VeriProof platform delivers an enterprise-grade, evidence-based solution for technical recruitment. By uniting automated GitHub repository inspection, a 3-pass LLM bias-elimination pipeline, a 2-part adaptive assessment architecture with Purgatory timeboxing, and multi-parametric forensic trust scoring, the system overcomes the profound limitations of static resume screening and multiple-choice testing. Candidates showcase verified, authentic engineering talent through an interactive Dynamic Skill Tree, while recruiters gain actionable, fraud-resistant candidate dossiers.
