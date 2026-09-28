@@ -1,10 +1,14 @@
+% ==============================================================================
+% CHAPTER 1: INTRODUCTION
+% ==============================================================================
+
 \chapter{Introduction}
 \section{Background}
-The current technical recruitment and academic evaluation still face the monumental challenge of fair, accurate and secure candidate evaluation. Traditional recruitment systems rely on resumes, GitHub repositories, online certifications, and portfolio websites to evaluate candidates. However, the traditional hiring platforms are vulnerable to critical attacks such as fake resumes, inflated claims of proficiency, and duplicate or purchased source-code repositories. Recruiters spend a lot of time manually cross-referencing github commit frequencies, analysing code authorship, and trying to verify whether a project is actually authored by the applicant.
+The current technical recruitment and academic evaluation still face the monumental challenge of fair, accurate and secure evaluation of the candidates. The conventional recruitment systems use resumes, GitHub repositories, online certifications and portfolio websites to assess the candidates. However, traditional hiring platforms are susceptible to serious attacks such as fake resumes, exaggerated proficiency claims, duplicate or bought source-code repositories. Recruiters spend a lot of time manually cross referencing github commit frequencies, analysing code authorship and trying to verify whether a project is actually authored by the applicant.
 
-Additionally, the emergence of state-of-the-art Large Language Models (LLMs) and freely accessible generative AI tools has compromised traditional online assessments. Candidates can copy questions into other browser tabs, search for solutions using generative bots, or simply memorise questions from publicly leaked question banks. While traditional Computerised Adaptive Testing (CAT) with Item Response Theory (IRT) addresses some of these issues, historically it has relied on pre-calibrated banks of tens of thousands of field-tested questions with static difficulty indices. Such approaches do not work in the fast-moving software development ecosystem where modern frameworks, languages and runtime paradigms change continuously.
+Furthermore, the emergence of cutting-edge Large Language Models (LLMs) and free generative AI tools has compromised traditional online assessments. Candidates can copy questions to other browser tabs, use generative bots to search for solutions or just memorise questions from publicly leaked question banks. Conventional Computerised Adaptive Testing (CAT) with Item Response Theory (IRT) solves some of these issues but has traditionally been based on pre-calibrated banks of tens of thousands of questions field tested with static difficulty indices. Such approaches do not work in the fast moving software development ecosystem where modern frameworks, languages and runtime paradigms change continuously.
 
-VeriProof is designed, architected and built as a complete full-stack candidate proof-of-skill and anti-fraud verification ecosystem. It combines automated GitHub repo inspection, AST-level code claim auditing, a novel 3-pass LLM bias-elimination question quality pipeline, a 2-part split adaptive examination engine with strict Purgatory timeboxing, real-time client-side proctoring telemetry, and an interactive Dynamic Skill Tree. VeriProof is powered by the MERN (MongoDB, Express.js, React.js, Node.js) stack and integrated with Google Gemini 2.5 Flash and Python computer vision services, offering an auditable, transparent and meritocratic technical hiring paradigm.
+VeriProof is designed, architected and built as a complete full stack candidate proof of skill and anti-fraud verification ecosystem. It combines automated GitHub repo scanning, AST-level code claim auditing, a novel 3-pass LLM bias-elimination question quality pipeline, a 2-part split adaptive test engine with strict Purgatory timeboxing, real-time client-side proctoring telemetry, and an interactive Dynamic Skill Tree. VeriProof is a MERN stack (MongoDB, Express.js, React.js, Node.js) application integrated with Google Gemini 2.5 Flash and Python computer vision services, offering an auditable, transparent and meritocratic technical hiring paradigm.
 
 \section{Problem Statement}
 Existing recruitment platforms suffer from three severe, interrelated failure modes:
@@ -15,25 +19,25 @@ Existing recruitment platforms suffer from three severe, interrelated failure mo
 \end{enumerate}
 
 \section{Objectives}
-The core objectives of the VeriProof platform are:
+Key objectives of the VeriProof platform are:
 \begin{enumerate}
-    \item To engineer an automated pipeline that ingests unstructured Job Descriptions (JDs), parses role seniority and required skill domains, and generates balanced calibration question pools.
-    \item To implement a two-stage adaptive testing architecture: Phase 1 (50\% standardized calibration) and Phase 2 (50\% dynamically personalized scenario-based debugging and architecture questions).
-    \item To design a secure Purgatory Intermission system enforcing strict recruiter-configurable timeboxing (5--15 minutes) to prevent candidate collusion while asynchronously computing the candidate's multi-dimensional Skill DNA.
-    \item To develop a 3-pass Question Quality Pipeline eliminating LLM biases: length disparity, hedging words, jargon imbalance, and absurd distractors.
-    \item To embed proactive forensic counter-measures, including deceptive trap questions and confidence calibration prompts, to compute an aggregate Forensic Trust Score (0--100\%).
-    \item To provide interactive candidate dashboards with gamified Dynamic Skill Trees and recruiter consoles with percentile rankings and forensic audit trails.
+    \item Build an automated pipeline to consume unstructured Job Descriptions (JDs) and parse role seniority, requisite skill domains and generate balanced calibration question pools.
+    \item To implement a two-stage adaptive testing architecture: Phase 1 (50\% standardized calibration); Phase 2 (50\% dynamically personalized scenario-based debugging and architecture questions).
+    \item To build a secure Purgatory Intermission system that strongly enforces recruiter-configurable timeboxing (5--15 minutes) to prevent candidate collusion while asynchronously computing the candidate's multi-dimensional Skill DNA.
+    \item Build a 3-pass Question Quality Pipeline that removes LLM biases: length imbalance, hedging words, jargon imbalance, and absurd distractors.
+    \item To embed proactive forensic counter-measures, including deceptive trap questions and confidence calibration prompts to compute an aggregate Forensic Trust Score (0--100\%).
+    \item To offer interactive candidate dashboards with gamified Dynamic Skill Trees and recruiter consoles with percentile rankings and forensic audit trails.
 \end{enumerate}
 
 \section{Scope of the Project}
-The project scope encompasses full-stack software development, RESTful API design, database schema architecture, asynchronous worker pipelines, LLM prompt engineering with strict JSON schema enforcement, client-side event proctoring telemetry, and cloud deployment. The system enforces Role-Based Access Control (RBAC) across three distinct user personas: Candidates (Students), Recruiters (Investigators), and System Administrators.
+The scope of the project includes full-stack software development, RESTful API design, database schema architecture, asynchronous worker pipelines, LLM prompt engineering with strict JSON schema enforcement, client-side event proctoring telemetry, and cloud deployment. The system uses Role-Based Access Control (RBAC) for three different user personas, namely: Candidates (Students), Recruiters (Investigators) and System Administrators.
 
 \section{Methodology}
-The platform adopts a decoupled multi-tier client-server architecture:
+The platform is based on a decoupled multi-tier client-server architecture:
 \begin{itemize}
-    \item \textbf{Presentation Tier}: Single-page application built on React 18, Vite, Tailwind CSS, Lucide-React, and Framer Motion, delivering responsive portals for candidate assessment, portfolio management, and recruiter candidate discovery.
-    \item \textbf{Application \& API Tier}: Node.js and Express.js backend services coordinating authentication, resume intelligence, GitHub synchronization, adaptive question assembly, and examination state machines.
-    \item \textbf{AI Inference Tier}: Multi-provider generative AI pipeline powered by Google Gemini 2.5 Flash, generating structured JSON payloads for calibration questions, debugging puzzles, and project defense oral questions.
+    \item \textbf{Presentation Tier}: Single page application based on React 18, Vite and Tailwind CSS, Lucide-React and Framer Motion, providing responsive portals for candidate assessment, portfolio management and recruiter candidate discovery.
+    \item \textbf{Application \& API Tier}: Node.js \& Express.js backend services orchestrating authentication, resume intelligence, GitHub sync, adaptive question assembly, and examination state machines.
+    \item \textbf{AI Inference Tier}: Multi-provider generative AI pipeline powered with Google Gemini 2.5 Flash, generating structured JSON payloads for calibration questions, debugging puzzles, and project defense oral questions.
     \item \textbf{Data Tier}: MongoDB Atlas clustered NoSQL datastore managing document schemas for users, parsed resume claims, repositories, dynamic skill progression nodes, and examination audit logs.
 \end{itemize}
 
@@ -50,142 +54,207 @@ The remainder of this report is organized as follows:
 \end{itemize}
 
 \clearpage
+
+% ==============================================================================
+% CHAPTER 2: LITERATURE SURVEY
+% ==============================================================================
+
 \chapter{Literature Survey}
+
 \section{Introduction}
-Technological advancements in automated talent acquisition, evidence-based candidate assessment, and anti-fraud verification have generated significant academic research. This chapter examines foundational and recent contributions across computerized testing, repository-based skill verification, and ethical AI in recruitment.
+The advances in talent acquisition automation, candidate assessment based on scientific evidence, and anti-fraud profile verification have stimulated extensive academic studies. Today's recruitment environments increasingly need dependable solutions for verification of claims made by applicants, assessment of their actual programming skills, and prevention of fraudulent profile representation. This chapter represents an overview of relevant and up-to-date scientific literature on such topics as digital portfolios, GitHub analytics, recruitment fraud detection, and cloud-based evaluation platforms.
 
 \section{Review of Existing Work}
-Marinin et al. [1] proposed an electronic portfolio framework for managing student competencies and achievements within university career offices. Their findings confirmed that digital portfolios enhance student visibility and evidence accessibility, though the authors noted the absence of automated mechanisms to verify code originality.
+Marinin et al. \cite{Marinin2025} introduced an electronic portfolio maintenance system to manage the learners' achievements and competencies. The paper states electronic portfolio adoption helps better skill showcasing, access, and professional visibility to recruiters and educationists.
 
-Vaishampayan et al. [2] investigated evidence-based technical hiring through GitHub repository analysis and resume matching. By parsing repository commit frequency, language distribution, and code ownership, they demonstrated that empirical code evidence significantly outperforms self-reported resume bullets in predicting workplace success.
+Vaishampayan et al. \cite{Brown2026} presented GitHub-Assisted Resume Matching for Evidence Based Hiring. This research work mainly focuses on repositories analyzing feature to evaluate code quality and major contributions to the project.
 
-Mujtaba and Mahapatra [3] analyzed algorithmic fairness, transparency, and bias mitigation in AI-driven recruitment platforms. They stressed that automated screening must rely on explainable, auditable criteria rather than opaque neural network embeddings, advocating for structured evaluation rubrics and explicit skill progression metrics.
+Mujtaba et al. \cite{Mujtaba2024} highlights fairness and ethical AI challenges in recruitment systems. This study showed AI used for screening candidates, recommendation systems, and recruitment process analytics.
 
-Akram et al. [4] developed deep learning architectures incorporating BERT and RoBERTa models to detect Online Recruitment Fraud (ORF). Their work highlighted the vulnerability of digital platforms to fake job postings and counterfeit applicant profiles, underscoring the necessity for robust cryptographic identity validation.
+Akram et al. \cite{Akram2024} discussed Online Recruitment Fraud Detection System Using Deep Learning proposed that DETECTION\_OF\_ORF fills the gap of trust by detecting fake job postings online with the help of BERT and RoBERTA.
 
-Lebopa et al. [5] developed an information verification system combining Artificial Neural Networks (ANN) and Random Forest (RF) classifiers to intercept credential fraud during corporate onboarding, demonstrating that automated verification drastically reduces administrative verification overhead.
+Lebopa et al. \cite{Lebopa2025} offered information verification systems to avoid fraud qualification during the recruitment process. MULTI-LAYERED\_PERCEPTRON-based ANN implements Random Forest algorithm to increase accuracy in recruitment.
 
-Thandar et al. [6] implemented a modern recruitment portal leveraging the MERN stack with secure cloud service integration. Their architecture verified that combining React, Node.js, and MongoDB provides optimal throughput for high-concurrency screening workflows.
+Thandar et al. \cite{Thandar2025} introduced MERN recruitment system includes client and server, deployed in Google cloud services ensure secure authentication. JWT verified each user from the recruiter to the candidates and admin. Feature include role-based Authentication System, Centralized Recruitment Management.
 
-Dugyala et al. [7] presented a smart recruitment system utilizing natural language processing for resume keyword parsing and automated candidate filtering.
+Dugyala et al. \cite{Dugyala2026} suggested Smart Recruitment System based on Artificial Intelligence Algorithms. Machine Learning with Natural Language Processing techniques as majors. It supports resume screening and analyzes candidates' profiles for recommendation. Moreover automated the recruiters hiring workflow. 
 
-Adawiah and Putra [8] examined candidate trust and employer credibility in e-recruitment environments. Their empirical surveys demonstrated that candidate trust rises substantially when evaluation rules, scoring criteria, and proctoring safeguards are transparently communicated.
+Adawiah et al. \cite{Adawiah2024} explored transparency in e-recruitment system builds up Candidate's trust. Highlight communication as the key recruitment workflow for recruiters to maintain their image's transparency.
 
-Agazzi [9] performed usability investigations into digital recruitment interfaces, proving that cognitive fatigue among hiring managers is strongly correlated with poorly organized, unverified candidate profiles.
+Agazzi et al. \cite{Agazzi2020} presented a Usability Study of LinkedIn Professional Digital Networking Platform. This survey helps understand how a digital platform affects both recruiter and job seekers.
 
-Ajayi and Udeh [10] reviewed modern IT recruitment strategies, demonstrating that practical problem-solving assessments, debugging scenarios, and gamified skill trees provide far higher predictive validity than unstructured whiteboard interviews.
-
-Wainer et al. [11] formulated the core principles of Computerized Adaptive Testing (CAT), proving that tailoring question difficulty to estimated candidate ability reduces test length by up to 50\% without sacrificing psychometric precision.
-
-Vaswani et al. [12] introduced the Transformer architecture, which forms the computational backbone of modern Large Language Models used in automated scenario generation.
+Ajayi et al. \cite{Ajayi2024} have examined creative recruitment methods in the IT industry. The paper highlights various methods of recruitment including AI-based recruitment, data analysis, hackathons, coding contests, and automated resume screening methods.
 
 \section{Comparative Analysis of Existing Methods}
-Table 2.1 synthesizes the comparative analysis of existing recruitment and assessment paradigms against the VeriProof platform.
+Numerous studies have been conducted towards designing an intelligent solution
+to improve modern recruitment procedures, paying special attention to candidate
+representation, automated assessment, and system architecture. The earliest research
+towards enhancing candidate assessment includes electronic portfolio systems
+proposed by Marinin et al. \cite{Marinin2025}, who aimed at increasing the candidates' professional
+visibility, and a GitHub resume matcher for evidence-based hiring via repository
+analysis designed by Vaishampayan et al. \cite{Brown2026}. Expanding the scope of automated
+assessment, Dugyala et al. \cite{Dugyala2026} proposed the concept of the Smart Recruitment System,
+which uses AI and NLP technologies for advanced resumes screening, while Ajayi et
+al. \cite{Ajayi2024} conducted a review of innovative IT recruitment strategies based on data analytics.
+Finally, an efficient system architecture is important for the proper functioning of
+recruitment tools. Therefore, Thandar et al. \cite{Thandar2025} proposed an efficient scalable
+MERN-stack platform including cloud services, while Agazzi et al. \cite{Agazzi2020} showed with the
+help of usability studies that user-friendly interface is crucial for successful
+implementation of the digital hiring ecosystem.
 
-\begin{table}[H]
-\caption{Comparative Analysis of Technical Recruitment and Assessment Systems}
+In addition to the advancements mentioned above, it is important to pay close
+attention to such aspects as security, transparency, and ethics in recent literature.
+Thus, Akram et al. \cite{Akram2024} focused on system vulnerability and proposed deep learning
+approaches based on BERT and RoBERTa models in order to identify Online
+Recruitment Fraud (ORF). Similar approach was implemented by Lebopa et al. \cite{Lebopa2025},
+who used Artificial Neural Networks and Random Forest algorithms to validate
+candidate qualifications and prevent academic fraud. Ethics in automated screening
+was studied by Mujtaba et al. \cite{Mujtaba2024}. Additionally, as stressed by Adawiah et al. \cite{Adawiah2024}, transparency in hiring processes and minimizing bias in e-recruitment systems
+are crucial to gaining the trust of candidates and establishing the credibility of recruiters.
+
+Table 2.1 represents the literature review categorized by authors, research methodology, major findings, and relation to VeriProof system.
+
+\begin{table}[htbp]
+\caption{Summary of Literature Survey}
 \centering
 \small
-\begin{tabular}{|p{0.18\textwidth}|p{0.22\textwidth}|p{0.24\textwidth}|p{0.26\textwidth}|}
+\begin{tabular}{|p{0.14\textwidth}|p{0.18\textwidth}|p{0.20\textwidth}|p{0.24\textwidth}|p{0.14\textwidth}|}
 \hline
-\textbf{Approach} & \textbf{Key References} & \textbf{Strengths} & \textbf{Critical Weaknesses} \\
+\textbf{Paper / Reference} & \textbf{Authors and Year} & \textbf{Method / Technology} & \textbf{Key Findings} & \textbf{Relevance to Project} \\
 \hline
-Traditional Portfolios & Marinin et al. [1] & Easy candidate submission & No automated verification or anti-plagiarism checks \\
+Electronic Portfolio Management \cite{Marinin2025} & S. A. Marinin et al. (2025) & Digital competency tracking framework & Enhances visibility and record-keeping for university career offices & Baseline for candidate portfolio layout \\
 \hline
-GitHub Parsing & Vaishampayan et al. [2] & Real code evidence & Lacks real-time adaptive scenario evaluation \\
+Evidence-Based Tech Hiring \cite{Brown2026} & C. Brown et al. (2026) & GitHub parsing \& commit analysis & Objective code evidence outperforms self-reported resume claims & Guides GitHub repository analysis module \\
 \hline
-Fraud Detection & Akram et al. [4], Lebopa et al. [5] & High fraud detection precision & Post-hoc offline auditing; no candidate interactive test \\
+Fairness in AI Recruitment \cite{Mujtaba2024} & D. F. Mujtaba et al. (2024) & Algorithmic bias mitigation models & Standardized evaluation criteria reduce screening bias & Informs bias-free question pipeline design \\
 \hline
-Conventional CAT & Wainer et al. [11] & Question efficiency & Requires static, pre-calibrated question banks \\
+Online Recruitment Fraud \cite{Akram2024} & N. Akram et al. (2024) & Deep learning (BERT and RoBERTa) & Successfully classifies fraudulent postings and identity attacks & Underpins identity validation strategies \\
 \hline
-\textbf{VeriProof Platform} & \textbf{Present Work (2026)} & \textbf{Unified MERN + GitHub + 2-Phase Adaptive Testing + Forensic Trust Scoring} & \textbf{Requires active network connectivity during exam} \\
+Academic Fraud Prevention \cite{Lebopa2025} & L. V. Lebopa et al. (2025) & ANN and Random Forest classification & Drastically lowers administrative verification overhead & Motivates automated credential verification \\
+\hline
+Intelligent Job Portal \cite{Thandar2025} & A. Thandar et al. (2025) & MERN stack with secure cloud integration & Highly responsive, scalable full-stack web architecture & Validates core MERN tech stack choice \\
+\hline
+Smart Recruitment System \cite{Dugyala2026} & R. Dugyala et al. (2026) & AI, ML, and NLP resume parsing & Improves screening velocity for high applicant volumes & Aligns with automated job description parsing \\
+\hline
+E-Recruitment Credibility \cite{Adawiah2024} & A. Adawiah et al. (2024) & Empirical applicant perception surveys & Candidate trust depends directly on procedural transparency & Emphasizes clear proctoring telemetry feedback \\
+\hline
+Usability in Networking \cite{Agazzi2020} & A. E. Agazzi (2020) & Platform UI/UX usability analysis & Unstructured profiles increase cognitive fatigue in reviewers & Directs clean recruiter dashboard visualization \\
+\hline
+IT Recruitment Strategies \cite{Ajayi2024} & F. A. Ajayi et al. (2024) & Empirical study of IT hiring methods & Practical skill challenges yield higher predictive hiring validity & Inspires interactive Dynamic Skill Tree testing \\
 \hline
 \end{tabular}
 \end{table}
-
 \section{Identified Gap and Project Motivation}
-Prior works address isolated dimensions of technical recruitment: resume parsing, offline credential checking, or basic GitHub repository linking. None integrate real-time repository verification, semantic plagiarism detection, dynamic LLM-driven adaptive testing, anti-cheat Purgatory timeboxing, and multi-parametric forensic trust scoring into a single unified full-stack platform. VeriProof fills this vital void.
+Whereas existing literature discusses a variety of solutions for individual recruitment issues including resume parsing, credential audit, simple portfolio display, and natural language screening, none of the current systems has addressed the problems together. Traditional systems do not incorporate any unified approach that can help integrate source code validation at the level of repositories with fraud-proof skill evaluation. In addition, traditional testing systems are susceptible to generative AI tools as well as unauthorized browsing during the intermission period. The motivation for developing the VeriProof platform lies precisely in these issues.
 
 \section{Summary}
-The literature establishes an urgent industry imperative for evidence-based candidate assessment. By synthesizing modern web architecture with generative AI pipelines and forensic telemetry, VeriProof transforms technical recruitment into an objective, fraud-resilient process.
+The studies reviewed above reveal the essential requirement in the field of
+employing evidence-based candidate assessment. VeriProof is an initiative designed to address the deficiencies identified above and consists of the latest advances in web development technologies and artificial intelligence combined with code analysis and multi-parameter forensic telemetry. In sum, the prior art focuses on post-hoc credentials checking, isolated resume mining, or repository displaying with no live problem-solving validation. Through the use of proctoring, deceptive trap question telemetry, and two-level assessment process, VeriProof helps eliminate the gap between self-proclaimed candidate profile and his/her software engineering skills.
 
+In addition to this, the framework will ensure that the system is resilient to any kind of unauthorized generative help by using time-boxing during the intermission phase in addition to code-based challenges. Through the generation of an integrity score of the candidates through their actions, an objective and immutable record of technical expertise is provided.
 \clearpage
+
+% ==============================================================================
+% CHAPTER 3: SYSTEM ANALYSIS AND REQUIREMENTS
+% ==============================================================================
+
 \chapter{System Analysis and Requirements}
 \section{Existing System}
-The prevailing recruitment process relies on manual inspection of submitted PDF resumes, self-reported skills on professional networking portals, and static multiple-choice examinations. Candidates apply through job boards, and recruiters manually verify candidate claims by opening GitHub links or scheduling preliminary screening phone calls. Pre-employment testing platforms present identical, static question sets to all applicants regardless of individual skill levels.
+Current methods of recruiting involve the review of PDF resumes submitted by the candidates,
+skills declared in professional social networking sites, and static multiple choice tests.
+The application process is done through job boards and the recruiter manually verifies the information of the candidates by clicking on GitHub links and conducting phone screening interviews. The pre-employment assessment platform displays the same static questions for all candidates.
 
 \section{Limitations of Existing System}
 \begin{enumerate}
-    \item \textbf{Susceptibility to Code Fraud}: Candidates easily fork popular open-source repositories or purchase turnkey projects, claiming primary authorship without possessing basic architectural understanding.
-    \item \textbf{Question Leaking \& Cheating via Generative AI}: Fixed test banks leak online. During unmonitored assessments, applicants paste questions into secondary devices or browser tabs to obtain instant solutions from generative LLMs.
-    \item \textbf{Recruiter Operational Inefficiency}: Recruiters expend hundreds of hours sifting through inflated resumes and conducting introductory screening calls for unqualified applicants.
-    \item \textbf{Binary Pass/Fail Measurement}: Conventional systems score candidates on an elementary percentage scale that fails to capture domain-specific strengths, weaknesses, or behavioral authenticity.
+    \item \textbf{Susceptibility to Code Fraud}: Candidates can easily fork popular
+    open-source repositories or buy ready-to-go projects without any knowledge
+    of the underlying architecture.
+    \item \textbf{Leakage of Questions \& Generative AI Cheating}: Fixed question sets are
+    posted online. In unmonitored tests, candidates copy questions and paste them
+    in another device or tab to get an immediate solution using generative
+    AI-powered LLMs.
+    \item \textbf{Inefficient Operations of Recruiters}: Hundreds of hours are wasted by
+    recruiters in filtering out bloated resumes and making calls to unqualified
+    candidates.
+    \item \textbf{Pass/Fail Metric System}: Traditional methods rate the candidates on a
+    very basic percentage scale without considering their domain strengths/weaknesses
+    and behavioral integrity.
 \end{enumerate}
 
 \section{Proposed System}
-VeriProof replaces unverified assertions with cryptographic proof-of-skill. The proposed platform:
+VeriProof swaps out the assertion with cryptographic proof-of-skill.
+
+The proposed platform does the following:
 \begin{itemize}
-    \item Validates user identity using encrypted JWT tokens and role-based route guards.
-    \item Authenticates GitHub repositories via the GitHub REST and GraphQL APIs, computing commit frequency, language distribution, and code ownership.
-    \item Implements a 3-pass Question Quality Pipeline ensuring LLM questions contain zero length bias, hedging words, or absurd options.
-    \item Executes a 2-part adaptive examination: Phase 1 establishes an empirical baseline across core competencies, followed by a timeboxed Purgatory Intermission, culminating in Phase 2 practical scenario debugging.
-    \item Synthesizes an aggregate Forensic Trust Score based on proctoring telemetry, trap question responses, and confidence calibration.
-    \item Renders an interactive Dynamic Skill Tree illustrating candidate mastery milestones.
+    \item Verifies users' identity via encrypted JWT tokens and role-based route guards.
+    \item Authenticates GitHub repositories with the GitHub REST and GraphQL API, calculating commit frequency, programming language use, and code ownership.
+    \item Runs a 3-pass Quality Control of Questions pipeline that ensures no length bias, hedging, or crazy choices in LLM generated questions.
+    \item Conducts a 2-round adaptive test that includes Phase 1 establishing the empirical baseline for core competencies with a timeboxed Purgatory Intermission and then follows up with Phase 2 problem debugging scenarios.
+    \item Generates a combined Forensic Trust Score via proctoring data, trap question answers, and calibration.
+    \item Displays an interactive Dynamic Skill Tree for candidate achievements.
 \end{itemize}
 
 \section{Functional Requirements}
 \begin{itemize}
-    \item \textbf{FR-01 (Authentication \& Access Control)}: Secure user registration, credential hashing with bcrypt, role-based authorization (Candidate, Recruiter, Admin), and JWT session management.
-    \item \textbf{FR-02 (Job Description Parsing)}: Automated extraction of job roles, technical domains, experience levels, and skill weights from raw text.
-    \item \textbf{FR-03 (GitHub Repository Verification)}: Asynchronous retrieval of repository metadata, commit logs, and contributor statistics using the GitHub REST API.
-    \item \textbf{FR-04 (Phase 1 Calibration Testing)}: Administration of a standardized 50\% baseline exam to evaluate foundational syntax and core principles.
-    \item \textbf{FR-05 (Purgatory Intermission Management)}: Strict enforcement of a recruiter-configurable intermission countdown timer (5--15 minutes) with automated exam finalization and abandonment penalty upon expiry.
-    \item \textbf{FR-06 (Skill DNA Computation)}: Calculation of domain accuracy, response velocity, and tier assignment (Foundational, Intermediate, Advanced) to parameterize Phase 2.
-    \item \textbf{FR-07 (Phase 2 Adaptive Scenario Testing)}: Generation and administration of 100\% practical code debugging and architectural trade-off questions with zero conceptual items.
-    \item \textbf{FR-08 (Trap Question \& Confidence Telemetry)}: Injection of deceptive seed-bank trap questions and multi-tier confidence prompts on Hard/Expert items.
-    \item \textbf{FR-09 (Dynamic Skill Tree Visualization)}: Interactive DAG-based rendering of candidate skill nodes, unlocked milestones, and visual mastery badges.
-    \item \textbf{FR-10 (Recruiter Analytics \& Dossiers)}: Candidate leaderboard, percentile rankings, forensic risk flags, and exportable audit dossiers.
+    \item \textbf{FR-01 (Authentication \& Access Control)}: Safe user signup process, password hashing by bcrypt, role-based access control (Candidate, Recruiter, Admin) and JWT-based sessions.
+    \item \textbf{FR-02 (Job Description Parsing)}: Automatic extraction of the job role, technical domain, experience level, and skills weighting from the raw text.
+    \item \textbf{FR-03 (GitHub Repository Extraction)}: Async GitHub repository metadata extraction via GitHub REST API.
+    \item \textbf{FR-04 (Phase 1 Calibration Test)}: Administering standardized 50\%-baseline test in order to assess basics and core principles knowledge.
+    \item \textbf{FR-05 (Purgatory Intermission Control)}: Strict control of the intermission timer set by the recruiter (5--15 minutes) that results in test completion or automatic test failure on timer expiration.
+    \item \textbf{FR-06 (Skill DNA Calculation)}: Skill DNA calculation of domain accuracy, response speed, and skill tier (Foundational, Intermediate, Advanced).
+    \item \textbf{FR-07 (Adaptive Scenario Testing -- Phase 2)}: Creation and delivery of 100\% real-world code debugging and architecture trade-offs without any theoretical questions.
+    \item \textbf{FR-08 (Trap Questions and Confidence Telemetry)}: Embedding of misleading seed-bank trap questions and multi-level confidence prompts for Hard \& Expert questions.
+    \item \textbf{FR-09 (Dynamic Skill Tree Visualization)}: Visualization of candidate skill nodes and unlocked milestones using an interactive DAG (Directed Acyclic Graph).
+    \item \textbf{FR-10 (Recruiter Analysis \& Dossiers)}: Candidate leaderboards, percentiles, forensic risk flags, and dossiers.
 \end{itemize}
 
 \section{Non-Functional Requirements}
 \begin{itemize}
-    \item \textbf{NFR-01 (Performance \& Latency)}: Client page transitions render within 200 ms; API responses complete under 400 ms; background AI adaptive question synthesis during Purgatory completes within 10 seconds.
-    \item \textbf{NFR-02 (Security \& Cryptography)}: Passwords hashed using bcrypt (10 salt rounds); API endpoints secured with JWT bearer verification; database queries sanitized via Mongoose ORM to prevent NoSQL injection.
-    \item \textbf{NFR-03 (Availability)}: 99.9\% server availability with automated Keep-Alive watchdog heartbeats to prevent cloud container spin-down.
-    \item \textbf{NFR-04 (Usability)}: Fully responsive user interface adhering to modern dark-mode ergonomics, WCAG accessibility standards, and smooth fluid animations.
+    \item \textbf{NFR-01 (Performance \& Latency)}: Client-side page transition renders in less than 200 ms; API calls return within 400 ms; AI adaptive question generation in background mode during Purgatory within 10 seconds.
+    \item \textbf{NFR-02 (Security \& Cryptography)}: Passwords encrypted using bcrypt hashing functionality with 10 rounds of salt; API calls protected using JWT bearer tokens; database queries protected from NoSQL injection attacks using Mongoose ORM.
+    \item \textbf{NFR-03 (Availability)}: 99.9\% availability on the server-side with Keep-Alive watchdog functionality that ensures the prevention of spin down of cloud containers.
+    \item \textbf{NFR-04 (Usability)}: Entirely responsive UI design with dark mode ergonomics, WCAG compliant accessibility and smooth fluid animations.
 \end{itemize}
 
 \section{Hardware Requirements}
 \begin{itemize}
-    \item \textbf{Client Device}: Personal computer or laptop with multi-core CPU (Intel Core i5 / AMD Ryzen 5 or higher).
-    \item \textbf{Memory (RAM)}: 8 GB minimum (16 GB recommended for concurrent development and testing).
-    \item \textbf{Storage}: 256 GB Solid State Drive (SSD) with at least 20 GB free space.
-    \item \textbf{Display}: 15-inch display with 1920 $\times$ 1080 Full HD resolution.
-    \item \textbf{Peripherals}: Standard QWERTY keyboard, optical mouse, and integrated/external webcam for proctoring.
-    \item \textbf{Network Connectivity}: Stable high-speed broadband connection ($\ge$ 10 Mbps).
+    \item \textbf{Client Computer}: Personal computer/laptop with multicore processor (Intel Core i5/AMD Ryzen 5 processor or better).
+    \item \textbf{RAM}: Minimum 8 GB RAM (16 GB RAM recommended).
+    \item \textbf{Hard Disk}: Minimum 256 GB SSD with at least 20 GB free space.
+    \item \textbf{Monitor}: 15" monitor with 1920 $\times$ 1080 Full HD display resolution.
+    \item \textbf{Peripherals}: QWERTY Keyboard, Optical Mouse, and Webcam.
+    \item \textbf{Internet Connectivity}: High-speed internet connection ($\ge$ 10 Mbps).
 \end{itemize}
 
 \section{Software Requirements}
 \begin{itemize}
-    \item \textbf{Operating System}: Windows 10/11, Ubuntu Linux 22.04 LTS, or macOS Sonoma.
-    \item \textbf{Runtime Environment}: Node.js LTS (v20.x or higher) and Python 3.11+.
-    \item \textbf{Frontend Stack}: React 19 / 18, Vite build system, Tailwind CSS v4, Framer Motion, Lucide-React.
-    \item \textbf{Backend Stack}: Express.js 5 / 4.x, Mongoose ODM, JsonWebToken, Multer.
-    \item \textbf{Database System}: MongoDB Atlas Clustered NoSQL Database Server v7.0.
-    \item \textbf{AI / Cloud APIs}: Google Generative AI SDK (`@google/generative-ai`) for Gemini 2.5 Flash, GitHub REST API, Cloudinary SDK.
-    \item \textbf{Code Editor \& Tooling}: Visual Studio Code, Git, Postman, Google Chrome / Edge browser.
+    \item \textbf{Operating Systems}: Windows 10/11, Ubuntu Linux 22.04 LTS, or MacOS Sonoma.
+    \item \textbf{Run-Time Environment}: Node.js LTS version (v20.x+), Python version (3.11+).
+    \item \textbf{Front-End Stack}: React 19 / 18, Vite build tool, Tailwind CSS v4, Framer Motion, Lucide-React.
+    \item \textbf{Back-End Stack}: Express.js 5 / 4.x, Mongoose ODM, JsonWebToken, Multer.
+    \item \textbf{DBMS}: MongoDB Atlas clustered NoSQL Database server v7.0.
+    \item \textbf{Artificial Intelligence / Cloud APIs}: Google Generative AI SDK (@google/generative-ai) for Gemini 2.5 Flash, GitHub REST API, Cloudinary SDK.
+    \item \textbf{Code Editor / Tools}: Visual Studio Code, Git, Postman, Google Chrome / Edge browser.
 \end{itemize}
 
-\section{Feasibility Study}
-Technical feasibility is validated by the production maturity of the MERN stack and high-speed LLM inference via Google Gemini APIs. Operational feasibility is substantiated by positive recruiter feedback regarding reduced technical interview screening hours. Economic feasibility is confirmed by zero licensing fees for open-source frameworks and cost-effective cloud micro-instances.
+\section{Feasibility Analysis}
 
-\section{Dataset Description}
-The system incorporates standardized software engineering competency datasets spanning four technical categories: Frontend (React, HTML5, CSS3, DOM), Backend (Node.js, Express, REST APIs, Microservices), Databases (MongoDB, Indexing, Transactions, NoSQL), and Core Programming (JavaScript ES6+, Asynchronous Event Loop, Algorithmic Complexity). In addition, public GitHub repositories are indexed for commit history and AST claim verification.
+Technical viability is confirmed by the production readiness of the MERN stack and fast LLM inference using Google Gemini APIs. Operational viability is verified by positive feedback from recruiters regarding the reduction of screening time in technical interviews. Economic viability is confirmed by the absence of licensing costs for open-source frameworks and the affordability of cloud micro instances.
+
+\section{Data Collection and Domains}
+
+The system is based on standardized datasets designed to evaluate software engineering competencies across four technical domains: Frontend Development (React, HTML5, CSS3, and DOM manipulation), Backend Development (Node.js, Express.js, REST APIs, and Microservices), Database Systems (MongoDB, Indexing, Transactions, and NoSQL concepts), and Core Programming (JavaScript ES6+, Asynchronous Event Loop, and Algorithmic Complexity). In addition, GitHub repositories are analyzed to assess commit history, contribution patterns, programming language usage, and abstract syntax tree (AST)-based validation of technical claims.
 
 \clearpage
+
+% ==============================================================================
+% CHAPTER 4: SYSTEM DESIGN AND METHODOLOGY
+% ==============================================================================
+
 \chapter{System Design and Methodology}
 \section{System Architecture / Block Diagram}
-The VeriProof system architecture is organized around a multi-tier, event-driven pattern designed for horizontal scalability, modularity, and low-latency interaction. Figure 4.1 illustrates the comprehensive architectural topology.
+The VeriProof system design follows a multi-layered, event-based approach geared towards horizontal scalability and modular and low-latency interactions.
+Figure 4.1 shows the entire architectural structure.
 
 \begin{figure}[H]
 \centering
@@ -207,31 +276,22 @@ The platform comprises four interconnected layers:
     \end{itemize}
     \item \textbf{Persistence \& Cloud Storage Layer}: MongoDB Atlas document store preserving users, exams, question banks, and audit logs, coupled with Cloudinary for verified media storage.
 \end{enumerate}
+\section{System Workflow}
+The VeriProof workflow imposes a rigorous sequential pipeline that is responsible for candidate skill verification, dynamic scenario generation, and proctoring telemetry auditing. Instead of bundle candidate claims into isolated self-reported bullets, each project submission initiates an asynchronous inspection process. The procedural flowchart of the entire VeriProof evaluation and verification lifecycle is visualized in Figure~4.2. The evaluation lifecycle proceeds through the following phases:
 
-\section{System Workflow / Flowchart}
-Figure 4.2 illustrates the procedural flowchart of the VeriProof evaluation and verification lifecycle.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.78\textwidth]{images/system_workflow}
-\caption{Workflow for VeriProof System}
-\end{figure}
-
-The workflow enforces a strict procedural sequence:
 \begin{enumerate}
-    \item \textbf{Secure Authentication}: The user authenticates via JWT-based credentials, granting access to role-authorized routes.
-    \item \textbf{Smart Dashboard Access}: Candidates access their portfolio command center; recruiters access role management and applicant queues.
-    \item \textbf{GitHub Repository Verification}: Candidate project links trigger automated GitHub API calls to fetch commit logs, contributor IDs, and language distributions.
-    \item \textbf{Plagiarism Detection Engine}: Project source files and summaries are scanned for code duplication and external repository matches.
-    \item \textbf{Skill Assessment \& Adaptive Testing}:
+    \item \textbf{Secure Authentication}: Candidate authenticates with encrypted JSON Web Token credentials for scoped access to role-protected dashboard endpoints.
+    \item \textbf{Smart Dashboard Access}: Candidate loads verification portfolio, while screener creates screening rubrics and timebox parameters.
+    \item \textbf{GitHub Repository Verification}: Backend queries GitHub REST and GraphQL APIs to analyze commit logs, contributor authorship, and repository integrity.
+    \item \textbf{Plagiarism Detection Engine}: Candidate uploads code repositories and project writeups for external code duplication and template reuse detection.
+    \item \textbf{Skill Testing \& Adaptive Testing}:
     \begin{itemize}
-        \item \textbf{Phase 1 (Calibration)}: Candidate completes 50\% baseline conceptual questions.
-        \item \textbf{Purgatory Intermission}: Candidate enters a timeboxed break (5--15 min). The backend asynchronously computes the candidate's Skill DNA and synthesizes Phase 2 scenario questions.
-        \item \textbf{Timeout Branch}: If the candidate fails to resume before the timer hits 00:00, the exam auto-finalizes with an adaptive abandonment penalty.
-        \item \textbf{Phase 2 (Adaptive)}: Candidate completes 100\% scenario-based debugging questions, trap questions, and confidence ratings.
+        \item \textbf{Phase 1 (Calibration)}: Puts Candidate through a Standardized Screening Test (50\% of Items) to evaluate candidate proficiency in syntax and software engineering.
+        \item \textbf{Purgatory Intermission}: Screener-defined countdown clock (5--15 minutes) guards against collusion while asynchronous server constructs personalized Phase 2 items. If candidate abandons exam or countdown expires, server concludes exam with automated score decay penalty.
+        \item \textbf{Phase 2 (Adaptive Testing)}: Challenges candidate with 100\% practical code debugging and architectural trade-offs posed in multiple-deceptive-trap and confidence-building bait items.
     \end{itemize}
-    \item \textbf{Analytics \& Reporting}: The forensic trust engine synthesizes tab switches, trap results, and confidence alignment into the final candidate dossier.
-    \item \textbf{Session Logout}: Session terminates securely, recording full audit history.
+    \item \textbf{Analytics \& Reporting}: Telemetry signals, tab switches, and trap question responses are combined into a verifiable Forensic Trust Score and candidate file.
+    \item \textbf{Session Logout}: The session is securely closed and unalterable audit logs are written into MongoDB.
 \end{enumerate}
 
 \section{Module Description}
@@ -320,6 +380,11 @@ System interactions are structured using UML Class and Sequence models. Key clas
 \end{figure}
 
 \clearpage
+
+% ==============================================================================
+% CHAPTER 5: IMPLEMENTATION
+% ==============================================================================
+
 \chapter{Implementation}
 \section{Implementation Environment}
 The VeriProof platform was implemented in a modern JavaScript runtime environment utilizing:
@@ -450,6 +515,11 @@ Figure 5.6 displays the Recruiter Candidate Discovery Hub where applicants are t
 The frontend was deployed using modern static optimization via Vite, and backend microservices were orchestrated with secure environment variables (`.env`), CORS pre-flight validation, and MongoDB Atlas database clusters.
 
 \clearpage
+
+% ==============================================================================
+% CHAPTER 6: RESULTS AND DISCUSSION
+% ==============================================================================
+
 \chapter{Results and Discussion}
 \section{Experimental Setup}
 The platform was benchmarked through 100 automated simulation trials across four candidate cohorts: Beginner, Intermediate, Advanced, and Expert. Evaluations tested question count efficiency, AI synthesis latency during Purgatory, and forensic proctoring accuracy under simulated cheating conditions.
@@ -519,6 +589,11 @@ All primary project objectives were comprehensively realized:
 The synergy between the 2-part adaptive exam and the Purgatory timebox solves the critical vulnerability of online testing. Because Part 2 exclusively features scenario-based debugging and architecture trade-offs, candidates cannot benefit from memorized definitions or quick web searches.
 
 \clearpage
+
+% ==============================================================================
+% CHAPTER 7: CONCLUSION AND FUTURE SCOPE
+% ==============================================================================
+
 \chapter{Conclusion and Future Scope}
 \section{Conclusion}
 The VeriProof platform delivers an enterprise-grade, evidence-based solution for technical recruitment. By uniting automated GitHub repository inspection, a 3-pass LLM bias-elimination pipeline, a 2-part adaptive assessment architecture with Purgatory timeboxing, and multi-parametric forensic trust scoring, the system overcomes the profound limitations of static resume screening and multiple-choice testing. Candidates showcase verified, authentic engineering talent through an interactive Dynamic Skill Tree, while recruiters gain actionable, fraud-resistant candidate dossiers.

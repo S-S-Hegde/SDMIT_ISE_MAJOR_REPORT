@@ -5,7 +5,10 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[hidelinks]{hyperref}
+
+% Color ONLY the page numbers in TOC, keep titles black
+\usepackage[colorlinks=true, linkcolor=blue, linktocpage=true, urlcolor=blue, citecolor=blue]{hyperref}
+
 \usepackage{geometry}
 \usepackage{array}
 \usepackage{float}
@@ -14,18 +17,17 @@
 \usepackage{eso-pic}
 
 % Margins & 1.5 Spacing
-\geometry{a4paper, left=1.25in, right=1in, top=0.85in, bottom=0.85in}
+\geometry{a4paper, left=1.25in, right=1in, top=1.0in, bottom=1.0in, headheight=15pt, footskip=25pt}
 \OnehalfSpacing
 
-% Suppress hyphenation completely (no words split with a hyphen across lines)
+% Suppress hyphenation completely
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \righthyphenmin=62
 \lefthyphenmin=62
 \sloppy
 
-% Chapter Styling matching mini.pdf:
-% "Chapter <num>" is RIGHT-ALIGNED, Title is CENTER-ALIGNED
+% Chapter Styling matching institutional standards
 \makechapterstyle{vtucompact}{%
   \renewcommand*{\chapterheadstart}{\vspace*{-0.2cm}}
   \setlength{\beforechapskip}{0pt}
@@ -40,7 +42,7 @@
     {\fontsize{15pt}{18pt}\selectfont\textbf{\thechapter}}\par
   }
   \renewcommand*{\afterchapternum}{\vspace{0.15cm}}
-  % For unnumbered chapters (Contents, Lists, etc.): no chapter label
+  % For unnumbered chapters: no chapter number label
   \renewcommand*{\printchapternonum}{}
   % Chapter Title: Centered 18pt bold
   \renewcommand*{\printchaptertitle}[1]{%
@@ -51,8 +53,22 @@
 
 \renewcommand*{\insertchapterspace}{}
 
-% Typography Scale
-% Chapter Title: 18pt | Section: 16pt | Subheading: 14pt | Body: 12pt
+% Rename to "Table of Contents" matching reference
+\renewcommand{\contentsname}{Table of Contents}
+
+% -------------------------------------------------------------
+% TABLE OF CONTENTS: FLUSH-RIGHT PAGE NUMBERS
+% -------------------------------------------------------------
+\setpnumwidth{2.5em}
+\setrmarg{3.5em}
+\renewcommand{\cftchapterformatpnum}[1]{\makebox[2.5em][r]{#1}}
+\renewcommand{\cftsectionformatpnum}[1]{\makebox[2.5em][r]{#1}}
+\renewcommand{\cftsubsectionformatpnum}[1]{\makebox[2.5em][r]{#1}}
+\renewcommand{\cftchapterleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchaptername}{}
+\setlength{\cftbeforechapterskip}{0.45cm}
+
+% Typography Scale for Headings
 \setsecheadstyle{\fontsize{16pt}{20pt}\bfseries\raggedright}
 \setsubsecheadstyle{\fontsize{14pt}{18pt}\bfseries\raggedright}
 \setsubsubsecheadstyle{\fontsize{12pt}{15pt}\bfseries\raggedright}
@@ -106,12 +122,30 @@
 }
 \lstset{style=mystyle}
 
-% Running footers for main matter
+% -------------------------------------------------------------
+% RUNNING HEADERS & FOOTERS WITH DIVIDER LINES
+% -------------------------------------------------------------
 \makepagestyle{vtufoot}
-\makeevenfoot{vtufoot}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
-\makeoddfoot{vtufoot}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
-\makeevenhead{vtufoot}{}{}{}
-\makeoddhead{vtufoot}{}{}{}
+
+% Header configuration: Project Title (Left) | Chapter X (Right)
+\makeevenhead{vtufoot}{\small\textnormal{VeriProof: Skill Proof Portfolio and Candidate Verification Platform}}{}{\small\textnormal{Chapter \thechapter}}
+\makeoddhead{vtufoot}{\small\textnormal{VeriProof: Skill Proof Portfolio and Candidate Verification Platform}}{}{\small\textnormal{Chapter \thechapter}}
+
+% Header rule line
+\makeheadrule{vtufoot}{\textwidth}{0.5pt}
+
+% Footer configuration: Dept Name (Left) | Page Number (Right)
+\makeevenfoot{vtufoot}{\small\textnormal{Department of Information Science and Engineering, SDMIT, Ujire}}{}{\thepage}
+\makeoddfoot{vtufoot}{\small\textnormal{Department of Information Science and Engineering, SDMIT, Ujire}}{}{\thepage}
+
+% Footer rule line
+\makefootrule{vtufoot}{\textwidth}{0.5pt}{\footruleskip}
+
+% Apply the footer line and dept name to Chapter start pages as well
+\copypagestyle{chapter}{vtufoot}
+\makeevenhead{chapter}{}{}{}
+\makeoddhead{chapter}{}{}{}
+\makeheadrule{chapter}{\textwidth}{0pt}
 
 \setsecnumdepth{subsubsection}
 \settocdepth{subsection}
@@ -147,7 +181,7 @@
 \input{abstract}
 \clearpage
 
-% Preliminary lists (inherit identical centered style and top spacing)
+% Table of Contents with aligned right numbers
 \tableofcontents*
 \clearpage
 
@@ -167,6 +201,7 @@
 
 % BACK MATTER
 \backmatter
+\pagestyle{plain}
 \bibliographystyle{IEEEtran}
 \bibliography{test_bib}
 \clearpage
