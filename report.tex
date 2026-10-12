@@ -1,153 +1,38 @@
-\documentclass[12pt,a4paper,oneside]{memoir}
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage[hidelinks]{hyperref}
-\usepackage{geometry}
-\usepackage{array}
-\usepackage{float}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{eso-pic}
+\begin{titlingpage}
+\begin{center}
+\vspace*{-0.6cm}
+{\fontsize{18pt}{21pt}\selectfont \textbf{VISVESVARAYA TECHNOLOGICAL UNIVERSITY}}\\[0.1cm]
+{\small \textbf{JNANA SANGAMA, BELAGAVI - 590018}}\\[0.25cm]
 
-\geometry{a4paper, left=1.25in, right=1in, top=1in, bottom=1in}
-\OnehalfSpacing
+\includegraphics[width=2.1cm]{images/vtu_logo}\\[0.25cm]
 
-% Prevent hyphenation breaks across lines: send complete words to next line
-\tolerance=9999
-\emergencystretch=3em
-\hyphenpenalty=10000
-\exhyphenpenalty=10000
+{\large \textbf{A Project Report}}\\[0.1cm]
+on\\[0.12cm]
+{\fontsize{18pt}{21pt}\selectfont \textbf{VeriProof: Skill Proof Portfolio and Candidate Verification Platform}}\\[0.35cm]
 
-% Remove undocumented extra vertical gap between chapters in List of Figures and List of Tables
-\renewcommand*{\insertchapterspace}{}
+{\footnotesize \textit{Submitted in partial fulfillment of the requirement for the award of the degree of}}\\[0.08cm]
+{\large \textbf{Bachelor of Engineering}}\\[0.08cm]
+in\\[0.08cm]
+{\fontsize{14pt}{17pt}\selectfont \textbf{Information Science and Engineering}}\\[0.25cm]
 
-% Section and Heading Font Size Configuration:
-% - Main Body Text: 12pt (via documentclass)
-% - Section Heading: 16pt (\fontsize{16pt}{20pt}\selectfont)
-% - SubSection Heading: 14pt (\fontsize{14pt}{18pt}\selectfont)
-\setsecheadstyle{\fontsize{16pt}{20pt}\bfseries\raggedright}
-\setsubsecheadstyle{\fontsize{14pt}{18pt}\bfseries\raggedright}
-\setsubsubsecheadstyle{\fontsize{12pt}{15pt}\bfseries\raggedright}
+\textbf{By}\\[0.12cm]
+{\small
+\begin{tabular}{ll}
+\textbf{4SU23IS013} & \textbf{Eshan S N} \\
+\textbf{4SU23IS041} & \textbf{Sai Dhanush} \\
+\textbf{4SU23IS046} & \textbf{Shridhar Sharatkumar Hegde} \\
+\textbf{4SU23IS053} & \textbf{Tejaswi Ananth Bhat} \\
+\end{tabular}
+}\\[0.25cm]
 
-% Match Mini Report Chapter Heading Format:
-%                 Chapter <number> (Right-aligned)
-%                 <blank line>
-%            <Chapter Title> (Centered)
-\makechapterstyle{sdmitreport}{%
-  \setlength{\beforechapskip}{0pt}
-  \setlength{\midchapskip}{10pt}
-  \setlength{\afterchapskip}{18pt}
-  \renewcommand*{\chapterheadstart}{\vspace*{-30pt}}
-  \renewcommand*{\printchaptername}{\raggedleft\fontsize{18pt}{22pt}\bfseries Chapter}
-  \renewcommand*{\chapternamenum}{\space}
-  \renewcommand*{\printchapternum}{\fontsize{18pt}{22pt}\bfseries\thechapter}
-  \renewcommand*{\afterchapternum}{\par\nobreak\vspace{\midchapskip}}
-  \renewcommand*{\printchaptertitle}[1]{\centering\fontsize{18pt}{22pt}\bfseries ##1}
-  \renewcommand*{\afterchaptertitle}{\par\nobreak\vspace{\afterchapskip}}
-}
-\chapterstyle{sdmitreport}
+{\footnotesize \textit{Under the Guidance of}}\\[0.08cm]
+\textbf{Mr. Jagadeesha M}\\[0.04cm]
+{\small \textit{Asst. Professor and Guide}}\\[0.2cm]
 
-% Solid Black Border for the First 5 Preliminary Pages (matching Document 2)
-\newcommand\BackgroundFrame{%
-  \put(0,0){%
-    \parbox[b][\paperheight]{\paperwidth}{%
-      \vfill
-      \centering
-      {%
-        \setlength{\fboxrule}{1.5pt}%
-        \setlength{\fboxsep}{0pt}%
-        \framebox[\dimexpr\paperwidth-28mm\relax][c]{%
-          \rule{0pt}{\dimexpr\paperheight-28mm\relax}%
-        }%
-      }%
-      \vfill
-    }%
-  }%
-}
+\includegraphics[width=2.0cm]{images/sdmit_logo}\\[0.2cm]
 
-\makepagestyle{sdmit}
-\makeoddhead{sdmit}{}{\small\leftmark}{}
-\makeevenhead{sdmit}{}{\small\leftmark}{}
-\makeoddfoot{sdmit}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
-\makeevenfoot{sdmit}{\scriptsize Department of Information Science and Engineering, SDMIT, Ujire}{}{\thepage}
-\pagestyle{sdmit}
-
-\renewcommand{\chaptername}{Chapter}
-
-\lstdefinelanguage{JavaScript}{
-  keywords={const, let, var, if, else, for, while, return, function, class},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
-}
-\lstdefinestyle{mystyle}{
-  basicstyle=\ttfamily\footnotesize,
-  breakatwhitespace=false,
-  breaklines=true,
-  captionpos=b,
-  keepspaces=true,
-  numbers=left,
-  numbersep=5pt,
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=2,
-  frame=single
-}
-\lstset{style=mystyle}
-
-\begin{document}
-\frontmatter
-
-% Enable border on the first five pages (Title, Certificate, Declaration, Acknowledgments, Abstract)
-\AddToShipoutPictureBG{\BackgroundFrame}
-
-\input{title}
-\clearpage
-
-\input{certificate}
-\clearpage
-
-\input{declaration}
-\clearpage
-
-\input{acknowledge}
-\clearpage
-
-\input{abstract}
-\clearpage
-
-% Disable border for Table of Contents, Lists, Acronyms, and Main Chapters
-\ClearShipoutPictureBG
-
-\tableofcontents
-\clearpage
-
-\listoffigures
-\clearpage
-
-\listoftables
-\clearpage
-
-\input{acronyms}
-\clearpage
-
-\mainmatter
-\input{main_chapters}
-
-\backmatter
-\bibliographystyle{IEEEtran}
-\bibliography{test_bib}
-
-\input{closing_sections}
-
-\end{document}
+{\fontsize{15pt}{18pt}\selectfont \textbf{Department of Information Science and Engineering}}\\[0.08cm]
+{\fontsize{15pt}{18pt}\selectfont \textbf{SDM Institute of Technology, Ujire - 574240}}\\[0.12cm]
+{\large \textbf{2026--2027}}
+\end{center}
+\end{titlingpage}
