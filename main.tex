@@ -1,14 +1,15 @@
 \documentclass[12pt,a4paper,oneside]{memoir}
 
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{graphicx}
+
+% Math packages & font collision protection
 \usepackage{amsmath}
+\let\Bbbk\relax
 \usepackage{amssymb}
+\usepackage{newtxtext,newtxmath}
 
-% Color ONLY the page numbers in TOC, keep titles black
+\usepackage{graphicx}
 \usepackage[colorlinks=true, linkcolor=blue, linktocpage=true, urlcolor=blue, citecolor=blue]{hyperref}
-
 \usepackage{geometry}
 \usepackage{array}
 \usepackage{float}
@@ -16,24 +17,23 @@
 \usepackage{xcolor}
 \usepackage{eso-pic}
 
-% Margins & 1.5 Spacing
-\geometry{a4paper, left=1.25in, right=1in, top=1.0in, bottom=1.0in, headheight=15pt, footskip=25pt}
+% Master Chapter Margins (Binding Margin = 1.25in, Other = 1.0in)
+\geometry{a4paper, left=1.25in, right=1.0in, top=1.0in, bottom=1.0in, headheight=15pt, footskip=25pt}
 \OnehalfSpacing
 
-% Suppress hyphenation completely
+% Suppress hyphenation
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \righthyphenmin=62
 \lefthyphenmin=62
 \sloppy
 
-% Chapter Styling matching institutional standards
+% Chapter Header Styling matching institutional standards
 \makechapterstyle{vtucompact}{%
   \renewcommand*{\chapterheadstart}{\vspace*{-0.2cm}}
   \setlength{\beforechapskip}{0pt}
   \setlength{\midchapskip}{0.1cm}
   \setlength{\afterchapskip}{0.6cm}
-  % For numbered chapters: Right-aligned "Chapter X"
   \renewcommand*{\printchaptername}{%
     \raggedleft{\fontsize{15pt}{18pt}\selectfont\textbf{\chaptername}}%
   }
@@ -42,44 +42,43 @@
     {\fontsize{15pt}{18pt}\selectfont\textbf{\thechapter}}\par
   }
   \renewcommand*{\afterchapternum}{\vspace{0.15cm}}
-  % For unnumbered chapters: no chapter number label
   \renewcommand*{\printchapternonum}{}
-  % Chapter Title: Centered 18pt bold
   \renewcommand*{\printchaptertitle}[1]{%
     \centering{\fontsize{18pt}{22pt}\selectfont\textbf{##1}}\par
   }
 }
 \chapterstyle{vtucompact}
-
 \renewcommand*{\insertchapterspace}{}
 
-% Rename to "Table of Contents" matching reference
 \renewcommand{\contentsname}{Table of Contents}
 
 % -------------------------------------------------------------
-% TABLE OF CONTENTS: FLUSH-RIGHT PAGE NUMBERS
+% TABLE OF CONTENTS: MATCHING REFERENCE TEMPLATE EXACTLY
+% - Chapter-level items (LOF, LOT, Acronyms, Chapters): NO dots (\hfill)
+% - Section-level items (1.1, 1.2, 2.1...): Dotted leaders
 % -------------------------------------------------------------
 \setpnumwidth{2.5em}
 \setrmarg{3.5em}
 \renewcommand{\cftchapterformatpnum}[1]{\makebox[2.5em][r]{#1}}
 \renewcommand{\cftsectionformatpnum}[1]{\makebox[2.5em][r]{#1}}
 \renewcommand{\cftsubsectionformatpnum}[1]{\makebox[2.5em][r]{#1}}
-\renewcommand{\cftchapterleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchapterleader}{\hfill}
+\renewcommand{\cftsectionleader}{\cftdotfill{\cftsectiondotsep}}
 \renewcommand{\cftchaptername}{}
 \setlength{\cftbeforechapterskip}{0.45cm}
 
-% Typography Scale for Headings
+% Heading font sizing
 \setsecheadstyle{\fontsize{16pt}{20pt}\bfseries\raggedright}
 \setsubsecheadstyle{\fontsize{14pt}{18pt}\bfseries\raggedright}
 \setsubsubsecheadstyle{\fontsize{12pt}{15pt}\bfseries\raggedright}
 
-% Heavy Solid Black Border for the First 5 Pages
+% Exact 20.3mm / 57.6pt Symmetric Border for Preliminary Pages
 \newcommand\DrawSolidBorder{%
   \AddToShipoutPictureBG*{%
     \AtPageLowerLeft{%
       \color{black}%
-      \linethickness{2.5pt}%
-      \put(26,26){\framebox(542,790){}}%
+      \linethickness{1.5pt}%
+      \put(57.6,57.6){\framebox(480.08,726.7){}}%
     }%
   }%
 }
@@ -123,65 +122,70 @@
 \lstset{style=mystyle}
 
 % -------------------------------------------------------------
-% RUNNING HEADERS & FOOTERS WITH DIVIDER LINES
+% RUNNING HEADERS & FOOTERS (ONLY FOR MAIN CHAPTERS)
 % -------------------------------------------------------------
 \makepagestyle{vtufoot}
-
-% Header configuration: Project Title (Left) | Chapter X (Right)
 \makeevenhead{vtufoot}{\small\textnormal{VeriProof: Skill Proof Portfolio and Candidate Verification Platform}}{}{\small\textnormal{Chapter \thechapter}}
 \makeoddhead{vtufoot}{\small\textnormal{VeriProof: Skill Proof Portfolio and Candidate Verification Platform}}{}{\small\textnormal{Chapter \thechapter}}
-
-% Header rule line
 \makeheadrule{vtufoot}{\textwidth}{0.5pt}
 
-% Footer configuration: Dept Name (Left) | Page Number (Right)
 \makeevenfoot{vtufoot}{\small\textnormal{Department of Information Science and Engineering, SDMIT, Ujire}}{}{\thepage}
 \makeoddfoot{vtufoot}{\small\textnormal{Department of Information Science and Engineering, SDMIT, Ujire}}{}{\thepage}
-
-% Footer rule line
 \makefootrule{vtufoot}{\textwidth}{0.5pt}{\footruleskip}
 
-% Apply the footer line and dept name to Chapter start pages as well
-\copypagestyle{chapter}{vtufoot}
-\makeevenhead{chapter}{}{}{}
-\makeoddhead{chapter}{}{}{}
-\makeheadrule{chapter}{\textwidth}{0pt}
+% Style for Chapter opening pages (Chapters 1 to 7)
+\makepagestyle{vtuchapter}
+\makeevenfoot{vtuchapter}{\small\textnormal{Department of Information Science and Engineering, SDMIT, Ujire}}{}{\thepage}
+\makeoddfoot{vtuchapter}{\small\textnormal{Department of Information Science and Engineering, SDMIT, Ujire}}{}{\thepage}
+\makefootrule{vtuchapter}{\textwidth}{0.5pt}{\footruleskip}
 
 \setsecnumdepth{subsubsection}
 \settocdepth{subsection}
 
 \begin{document}
 
-% FRONT MATTER
+% =============================================================
+% FRONT MATTER: PRELIMINARY SIGN-OFF PAGES (NO PAGE NUMBERS)
+% =============================================================
 \frontmatter
-\pagestyle{plain}
+\pagestyle{empty}
 
-% 1. Title Page (Border 1)
+\newgeometry{left=22mm, right=22mm, top=24mm, bottom=22mm}
+
+% 1. Title Page
 \DrawSolidBorder
 \input{title}
 \clearpage
 
-% 2. Certificate (Border 2)
+% 2. Certificate
 \DrawSolidBorder
 \input{certificate}
 \clearpage
 
-% 3. Declaration (Border 3)
+% 3. Declaration
 \DrawSolidBorder
 \input{declaration}
 \clearpage
 
-% 4. Acknowledgments (Border 4)
+% 4. Acknowledgments
 \DrawSolidBorder
 \input{acknowledge}
 \clearpage
 
-% 5. Abstract (Border 5)
+% 5. Abstract
 \DrawSolidBorder
 \input{abstract}
 \clearpage
 
-% Table of Contents with aligned right numbers
+\restoregeometry
+
+% =============================================================
+% PRELIMINARY NUMBERING: ROMAN (i, ii, iii...) STARTS AT TOC
+% (Plain style: NO department line, NO top header)
+% =============================================================
+\pagenumbering{roman}
+\pagestyle{plain}
+
 \tableofcontents*
 \clearpage
 
@@ -194,19 +198,23 @@
 \input{acronyms}
 \clearpage
 
-% MAIN MATTER
+% =============================================================
+% MAIN MATTER: ARABIC (1, 2, 3...) STARTS AT CHAPTER 1
+% (Activate running header, department footer, and rule lines)
+% =============================================================
 \mainmatter
 \pagestyle{vtufoot}
+\aliaspagestyle{chapter}{vtuchapter}
 \input{main_chapters}
 
+% =============================================================
 % BACK MATTER
+% =============================================================
 \backmatter
 \pagestyle{plain}
 \bibliographystyle{IEEEtran}
 \bibliography{test_bib}
 \clearpage
-
-
 
 \chapter*{Guide Profile}
 \addcontentsline{toc}{chapter}{Guide Profile}
@@ -221,7 +229,7 @@ and Project Guide
 \end{center}
 &
 \textbf{Name: Prof. Jagadeesha M} \newline\newline
-He is presently working as an Assistant Professor with 17 years of teaching experience. He holds a BE in ECE and an M.Tech in VLSI Design and has taught subjects in both ECE and ISE. He is currently pursuing a Ph.D. in deep learning and has published several research papers in reputed journals and conferences. His academic mentorship has guided numerous undergraduate projects in full-stack engineering, artificial intelligence, and intelligent computing systems. \\
+He is presently working as an Assistant Professor with 17 years of teaching experience. He holds a BE in ECE and an M.Tech in VLSI Design and has taught subjects in both ECE and ISE. He is currently pursuing his Ph.D. in deep learning and has published several research papers in reputed journals and conferences. His academic mentorship has guided numerous undergraduate projects in full-stack engineering, artificial intelligence, and intelligent computing systems. \\
 \hline
 \end{tabular}
 \end{center}

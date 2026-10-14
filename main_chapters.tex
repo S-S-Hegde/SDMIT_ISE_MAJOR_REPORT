@@ -4,11 +4,7 @@
 
 \chapter{Introduction}
 \section{Background}
-The current technical recruitment and academic evaluation still face the monumental challenge of fair, accurate and secure evaluation of the candidates. The conventional recruitment systems use resumes, GitHub repositories, online certifications and portfolio websites to assess the candidates. However, traditional hiring platforms can be vulnerable to issues such as fake resumes, overstated skills, and duplicate or purchased code repositories. Recruiters often have to spend a significant amount of time manually checking GitHub activity, reviewing code authorship, and verifying whether the projects listed by an applicant were actually created by them. This makes the hiring process slower, more difficult, and less reliable.
-
-In addition, the emergence of state-of-the-art Large Language Models (LLMs) and zero-cost generative AI tools has endangered traditional online assessments. Candidates can copy questions to other browser tabs, use generative bots to search for solutions or just memorise questions from publicly leaked question banks. Conventional Computerised Adaptive Testing (CAT) with Item Response Theory (IRT) solves some of these issues but has traditionally been based on pre-calibrated banks of tens of thousands of questions field tested with static difficulty indices. Such approaches do not work in the fast moving software development ecosystem where modern frameworks, languages and runtime paradigms change continuously.
-
-VeriProof is designed, architected and built as a complete full stack candidate proof of skill and anti-fraud verification ecosystem. It combines automated GitHub repo scanning, AST-level code claim auditing, a novel 3-pass LLM bias-elimination question quality pipeline, a 2-part split adaptive test engine with strict Purgatory timeboxing, real-time client-side proctoring telemetry, and an interactive Dynamic Skill Tree. VeriProof is a MERN stack (MongoDB, Express.js, React.js, Node.js) application integrated with Google Gemini 2.5 Flash and Python computer vision services, offering an auditable, transparent and meritocratic technical hiring paradigm.
+The lightning speed of tech recruitment has exposed serious weaknesses in old-school hiring methods based on self-filled resumes, unverified certifications and public GitHub portfolios. Fraudulent claims, repositories that have been cloned or purchased, and padded credentials are all too common in traditional screening and require exhaustive manual verification. In addition, the advent of generative AI and large language models (LLMs) has compromised the integrity of traditional online assessments, with candidates able to bypass assessments via illicit search tools and leaked question banks. Computerised Adaptive Testing (CAT) provides an adaptive benchmark but static question banks fail to keep up with dynamic software paradigms. This calls for an urgent need in the industry for an automated, fraud-resilient verification platform to re-establish trust and transparency in technical hiring by integrating code-authorship validation with dynamic and tamper-proof skill assessment.
 
 \section{Problem Statement}
 Existing recruitment platforms suffer from three severe, interrelated failure modes:
@@ -54,7 +50,6 @@ The remainder of this report is organized as follows:
 \end{itemize}
 
 \clearpage
-
 % ==============================================================================
 % CHAPTER 2: LITERATURE SURVEY
 % ==============================================================================
@@ -593,29 +588,33 @@ All primary project objectives were achieved comprehensively:
 The combination of the 2-part adaptive exam and the Purgatory timebox fills the most critical vulnerability in online testing. Since part 2 is all scenario-based debugging and architecture trade-offs, there is no way for candidates to exploit memorization or search cheating.
 
 \clearpage
-
 % ==============================================================================
 % CHAPTER 7: CONCLUSION AND FUTURE SCOPE
 % ==============================================================================
 
 \chapter{Conclusion and Future Scope}
+
 \section{Conclusion}
-The VeriProof platform delivers an enterprise-grade, evidence-based solution for Recruiting on a technical level by combining the automated inspection of GitHub repositories, a 3-pass LLM bias-elimination pipeline, a 2-part adaptive assessment architecture with Purgatory timeboxing, and multi-parametric forensic trust scoring, the system overcomes the profound limitations of static resume screening and multiple-choice Testing is carried out by candidates as a means of demonstrating their genuine and authentic engineering abilities through an interactive Dynamic Skill Tree, while recruiters gain actionable, fraud-resistant candidate dossiers.
+The traditional technical hiring pipeline has been completely broken down by the rise of generative AI tools, public repository scraping, and resume fabrication. Traditional assessment methods such as self-reported portfolio claims, static algorithmic multiple-choice tests, and passive resume parsing cannot distinguish genuine software engineering skills from memorisation or cheating via AI assistance. This project designed, deployed and empirically validated VeriProof, an enterprise-grade, evidence-driven candidate verification and skill evaluation platform to address these structural issues.
+
+VeriProof redefines recruitment from shallow credential screening to verifiable proof-of-skill validation by integrating deep GitHub repository intelligence, automated Abstract Syntax Tree (AST) contribution analysis, a 3-pass LLM bias-elimination pipeline, a two-phase computerised adaptive assessment engine, and multi-parametric forensic telemetry. The timeboxed Purgatory Intermission prevents external collaboration during adaptive test compilation while allowing the asynchronous derivation of a multidimensional Skill DNA. Experimental evaluation shows that the platform reduces assessment fatigue by up to 33\%, and provides better skill-tier differentiation than traditional 30-item fixed tests.
+
+Moreover, the composite Forensic Trust Score can detect anomalous testing behaviours, tab switching, and LLM-assisted cheating patterns. VeriProof provides candidates with a real gamified Dynamic Skill Tree to showcase skills and provides technical recruiters with actionable fraud-resistant dossiers that reduce interview time and hiring risk significantly.
 
 \section{Major Contributions}
+The main technical and architectural contributions of the VeriProof project are:
 \begin{itemize}
-    \item \textbf{Two-Stage Adaptive Architecture}: A 50/50 calibration-to-scenario split Adjusts question difficulty per empirical Skill DNA.
+    \item \textbf{Two-Stage Adaptive Assessment Architecture}: Implemented a split of the testing 50/50. Phase 1 builds an empirical baseline for core syntax and concepts, and Phase 2 serves curated debugging puzzles and architectural trade-off scenarios synthesised to target each candidate's specific tier of competency in a dynamic manner.
     \item \textbf{Strict Purgatory Intermission}: Timeboxed candidate holding state prevents external collaboration during adaptive test compilation.
-    \item \textbf{3-Pass Bias Elimination Pipeline}: Timeboxed candidate holding state prevents external collaboration during adaptive test compilation.
+    \item \textbf{3-Pass Bias Elimination Pipeline}: Algorithmic quality gates that eliminate generative AI artifacts, such as length discrepancies, hedging vocabulary patterns, and technical jargon imbalances.
     \item \textbf{Multi-Factor Forensic Trust Synthesizer}: Aggregates tab-switching telemetry, trap question responses, and confidence calibration into an auditable trust metric.
     \item \textbf{Full-Stack MERN Implementation}: Production-grade reactive web application with role-based candidate and recruiter consoles.
 \end{itemize}
 
 \section{Limitations}
 \begin{itemize}
-    \item \textbf Real-time AI question synthesis requires dependable internet
-     connectivity to cloud LLM endpoints.
-    \item \textbf Private GitHub repositories require candidate OAuth token grants for commit auditing.
+    \item \textbf{Inference Latency \& Connectivity}: Real-time AI question synthesis requires dependable internet connectivity to cloud LLM endpoints.
+    \item \textbf{Repository Visibility}: Private GitHub repositories require candidate OAuth token grants for commit auditing.
 \end{itemize}
 
 \section{Future Scope}
