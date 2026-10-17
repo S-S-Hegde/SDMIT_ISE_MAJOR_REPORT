@@ -13,7 +13,7 @@ Existing recruitment platforms suffer from three severe, interrelated failure mo
     \item \textbf{Vulnerability to Generative AI Assistance}: Traditional online exams rely on static, purely conceptual multiple-choice items (e.g., definitions, syntax lookups). In unsupervised environments, candidates query search engines and LLMs during testing, inflating scores without possessing practical troubleshooting competence.
     \item \textbf{Lack of Nuanced Forensic Telemetry}: Current proctoring solutions rely on crude binary disqualification triggers (e.g., webcam disconnects) rather than nuanced multi-parametric signals such as deceptive trap question responses, confidence calibration divergence, and response time distributions.
 \end{enumerate}
-
+\clearpage
 \section{Objectives}
 Key objectives of the VeriProof platform are:
 \begin{enumerate}
@@ -26,29 +26,50 @@ Key objectives of the VeriProof platform are:
 \end{enumerate}
 
 \section{Scope of the Project}
-The scope of the project includes full-stack software development, RESTful API design, database schema architecture, asynchronous worker pipelines, LLM prompt engineering with strict JSON schema enforcement, client-side event proctoring telemetry, and cloud deployment. The system uses Role-Based Access Control (RBAC) for three different user personas, namely: Candidates (Students), Recruiters (Investigators) and System Administrators.
+The primary scope of the VeriProof platform is to provide an automated, multi-tiered, fraud-resistant technical candidate evaluation environment that reconciles self-reported qualifications with verifiable computational evidence. The operational boundaries and deliverables of this system comprise:
+\begin{enumerate}
+    \item \textbf{Dynamic Job Description Competency Ingestion}: Ingesting arbitrary recruiter job descriptions via Google Gemini inference to dynamically extract normalized Capability Nodes and Competency Trees with relative weighting ($\sum W_i = 100.0$), eliminating dependence on static assessment templates.
+    \item \textbf{Empirical Artifact and Codebase Forensics}: Validating candidate identity and repository claims against live GitHub commit histories, enforcing an author attribution threshold ($\ge 30\%$), detecting bulk-import anomalies ($\Delta t < 600\text{ s}$), and classifying starter scaffolding to prevent template cloning.
+    \item \textbf{Cross-Source Evidence Fusion}: Reconciling resume claims against repository code artifacts using automated contradiction detection to penalize metric exaggeration, unsubstantiated assertions, and code plagiarism.
+    \item \textbf{Two-Phase Computerized Adaptive Testing (CAT)}: Administering a calibration test (Phase 1) focused on core computer science foundations, followed by an enforced Purgatory holding state (5--15 minutes) that dynamically generates AST-grounded scenario debugging challenges (Phase 2) tailored to the candidate's verified codebase diffs.
+    \item \textbf{Behavioral Telemetry and Lightweight Surveillance}: Auditing exam integrity through in-browser behavioral telemetry (tab switching frequency, focus-loss tracking, and response-time distribution) paired with deceptive trap questions, completely eliminating the need for invasive computer vision video streaming.
+    \item \textbf{Multi-Dimensional Candidate Synthesis and Decision Policies}: Calculating deterministic trust scores, behavioral STAR metrics, and candidate percentile rankings configured across customizable hiring policies (\textit{Startup}, \textit{Enterprise}, \textit{Intern}, and \textit{Senior Technical Track}).
+\end{enumerate}
 
 \section{Methodology}
-The platform is based on a decoupled multi-tier client-server architecture:
-\begin{itemize}
-    \item \textbf{Presentation Tier}: Single page application based on React 18, Vite and Tailwind CSS, Lucide-React and Framer Motion, providing responsive portals for candidate assessment, portfolio management and recruiter candidate discovery.
-    \item \textbf{Application \& API Tier}: Node.js \& Express.js backend services orchestrating authentication, resume intelligence, GitHub sync, adaptive question assembly, and examination state machines.
-    \item \textbf{AI Inference Tier}: Multi-provider generative AI pipeline powered with Google Gemini 2.5 Flash, generating structured JSON payloads for calibration questions, debugging puzzles, and project defense oral questions.
-    \item \textbf{Data Tier}: MongoDB Atlas clustered NoSQL datastore managing document schemas for users, parsed resume claims, repositories, dynamic skill progression nodes, and examination audit logs.
-\end{itemize}
+The VeriProof platform is architected around a hybrid polyglot microservice framework that separates high-concurrency client session management from compute-intensive analytical intelligence and evidence reasoning. The methodological execution proceeds across three synchronized tiers:
+
+\begin{enumerate}
+    \item \textbf{Presentation and Session Gateway Tier (MERN Stack)}:
+    \begin{itemize}
+        \item \textbf{Client Interface}: Built using React 18, Vite, and Tailwind CSS. Provides separate, highly reactive portals for candidates (examination console, skill tree, and portfolio review) and technical recruiters (Job Description manager and Investigator Hub).
+        \item \textbf{API Gateway \& Controller (Node.js/Express)}: Manages user authentication (salted bcrypt password hashing and JWT lifecycle), candidate exam state machines, telemetric event buffering, and MongoDB Atlas persistence.
+    \end{itemize}
+
+    \item \textbf{Analytical Intelligence Microservice Tier (Python FastAPI Engine)}:
+    A dedicated Python 3.11+ analytical service operates asynchronously to execute deterministic scoring models and cross-source evidence verification without blocking the main event loop:
+    \begin{itemize}
+        \item \textbf{Resume \& Repository Intelligence}: Uses PyPDF binary stream extraction and GitHub REST/GraphQL interrogation to build cryptographic evidence maps.
+        \item \textbf{Evidence Fusion Engine}: Automatically cross-references claimed resume skills against extracted AST constructs, identifying contradictions (such as claims lacking codebase corroboration or inflated impact metrics).
+        \item \textbf{Multi-Factor Capability Scoring}: Computes dimensional capability scores based on coverage, architectural depth, code complexity, reliability, and delivery consistency.
+        \item \textbf{Trust Score Calculator}: Synthesizes technical performance, behavioral assessments, and categorical fraud deductions (fork penalties, plagiarism flags, and missing sources) into a normalized index $S_{trust} \in [0, 100]$.
+        \item \textbf{Recruiter Decision Engine}: Evaluates composite candidate profiles against selected organizational policies to generate reproducible hiring recommendations (\textit{Strong Hire}, \textit{Hire}, \textit{Borderline}, \textit{Hold}, \textit{Reject}).
+    \end{itemize}
+
+    \item \textbf{LLM Reasoning and Bias-Elimination Tier}:
+    Employs Google Gemini Flash for structured semantic analysis, dynamic question generation, and STAR response evaluation, enforced via a strict 3-pass distractor validation pipeline to eliminate structural LLM telltale biases.
+\end{enumerate}
 
 \section{Organization of the Report}
-The remainder of this report is organized as follows:
+The remainder of this report is organized into the following chapters:
 \begin{itemize}
-    \item \textbf{Chapter 2 (Literature Survey)}: Reviews prior research on computerized testing, evidence-based recruitment, fraud detection, and AI evaluation, highlighting identified research gaps.
-    \item \textbf{Chapter 3 (System Analysis and Requirements)}: Explores existing systems, outlines functional and non-functional requirements, and details hardware/software specifications.
-    \item \textbf{Chapter 4 (System Design and Methodology)}: Elaborates on system architecture, process flowcharts, module breakdown, mathematical formulations, and UML designs.
-    \item \textbf{Chapter 5 (Implementation)}: Provides comprehensive details on the codebase implementation, backend middleware, adaptive question pipelines, database schemas, and actual user interface screenshots.
-    \item \textbf{Chapter 6 (Results and Discussion)}: Documents empirical benchmarking, test cases, question reduction efficiency, and forensic trust score decay analysis.
-    \item \textbf{Chapter 7 (Conclusion and Future Scope)}: Summarizes contributions, identifies limitations, and outlines future enhancements.
-    \item \textbf{Closing Sections}: Includes Bibliography, Plagiarism Report, Guide Profile, and Student Profile.
+    \item \textbf{Chapter 2 (Literature Survey)}: Reviews conventional technical hiring platforms, automated proctoring frameworks, code clone detection mechanisms, and recent applications of Large Language Models in assessment synthesis, highlighting the research gap VeriProof addresses.
+    \item \textbf{Chapter 3 (System Analysis and Requirements)}: Details the operational analysis of traditional recruitment workflows, sets forth functional requirements including Evidence Fusion, STAR evaluation, and recruiter decision policies, specifies minimal hardware/software requirements, and outlines the complete Computer Science and Engineering domain taxonomy.
+    \item \textbf{Chapter 4 (System Design and Methodology)}: Presents the system architecture, the 7-state Purgatory examination finite state machine, descriptions of the nine specialized analytical engines, detailed UML models, and the mathematical formulations for multi-factor capability scoring and composite trust computation.
+    \item \textbf{Chapter 5 (Implementation)}: Explains the codebase implementation across the Node.js/Express gateway and the FastAPI Python analytical intelligence engine, highlighting data schemas, Pydantic validation contracts, AST commit verification, and live dashboard interfaces.
+    \item \textbf{Chapter 6 (Results and Discussion)}: Analyzes empirical results from simulated candidate cohorts, evaluates assessment efficiency and question reduction rates, details test case validations for fraud detection and evidence contradictions, and presents candidate triangulation quadrant outcomes.
+    \item \textbf{Chapter 7 (Conclusion and Future Scope)}: Summarizes the major research contributions, addresses current architectural boundaries, and outlines future enhancements, including on-device privacy-preserving WebGL gaze tracking and sandboxed code execution environments.
 \end{itemize}
-
 \clearpage
 % ==============================================================================
 % CHAPTER 2: LITERATURE SURVEY
@@ -147,6 +168,7 @@ employing evidence-based candidate assessment. VeriProof is an initiative design
 
 In addition to this, the framework will ensure that the system is resilient to any kind of unauthorized generative help by using time-boxing during the intermission phase in addition to code-based challenges. Through the generation of an integrity score of the candidates through their actions, an objective and immutable record of technical expertise is provided.
 \clearpage
+
 % ==============================================================================
 % CHAPTER 3: SYSTEM ANALYSIS AND REQUIREMENTS
 % ==============================================================================
@@ -177,18 +199,18 @@ VeriProof establishes a verifiable, evidence-driven proof-of-skill evaluation pa
 \end{itemize}
 
 \section{Functional Requirements}
-\begin{itemize}
-    \item \textbf{FR-01 (Authentication \& Role-Based Access Control)}: Secure candidate, recruiter, and administrator authentication using salted bcrypt password hashing, JSON Web Tokens (JWT), and role-guarded API middleware.
-    \item \textbf{FR-02 (Dynamic Job Description Extraction)}: Automated ingestion of raw JD text to synthesize targeted technical skill vectors (\texttt{core\_skills}) and production engineering challenges (\texttt{project\_context}).
-    \item \textbf{FR-03 (Candidate Identity \& Resume Audit)}: Automatic extraction of candidate email aliases from uploaded resumes; triggers immediate identity mismatch alerts and rejection workflows if resume credentials diverge from account metadata.
-    \item \textbf{FR-04 (GitHub Repository \& AST Forensics)}: Asynchronous extraction of up to 100 historical commits per repository; validates commit authorship ($\ge 30\%$ threshold), detects template scaffolds, and computes repository evidence scores.
-    \item \textbf{FR-05 (Phase 1 Standardization Assessment)}: Delivery of balanced calibration questions derived from JD skill vectors, recording item-level response latencies and answer changes.
-    \item \textbf{FR-06 (Purgatory Intermission Lifecycle State Machine)}: Enforces a strict recruiter-configured intermission timer (5--15 minutes) during which the candidate is held while backend workers compute multi-dimensional Skill DNA and project defense items; enforces a $0.3\times$ score penalty upon timer expiration.
-    \item \textbf{FR-07 (Biometric Identity Re-Verification)}: Captures and validates a webcam snapshot prior to Phase 2 activation to prevent proxy test-taker substitutions during intermission.
-    \item \textbf{FR-08 (Adaptive Phase 2 Scenario Evaluation)}: Dynamically serves 100\% scenario-based debugging puzzles, architecture trade-offs, and commit-specific defense questions matched to the candidate's demonstrated tier.
-    \item \textbf{FR-09 (Forensic Telemetry \& Trap Question Trigger)}: Detects window blurs, tab switching, and clipboard paste bursts, embedding deceptive trap questions that cap performance tiers if counterfeit options are selected.
-    \item \textbf{FR-10 (Interactive Skill Tree \& Recruiter Dossier)}: Renders interactive SVG/Canvas DAG representations of unlocked competencies and compiles candidate triangulation quadrants (Verified Talent, Hidden Gem, Overstated Profile, Anomalous Evidence).
-\end{itemize}
+The VeriProof platform implements the following core functional requirements across its hybrid MERN and Python FastAPI intelligence backend:
+\begin{enumerate}
+    \item \textbf{FR-01: Dynamic Job Description Competency Ingestion}: The system must ingest arbitrary recruiter job descriptions, parsing them via Google Gemini inference to extract normalized Capability Nodes and Competency Trees with relative weighting ($\sum W_i = 100.0$).
+    \item \textbf{FR-02: Cryptographic Resume & Artifact Extraction}: The platform must extract candidate profile claims, education, and project links from uploaded PDF documents using PyPDF stream parsing.
+    \item \textbf{FR-03: Cross-Source Evidence Fusion \& Contradiction Detection}: The evidence fusion engine must automatically cross-reference candidate resume claims against GitHub repository AST evidence, identifying and flagging metric exaggerations and unsupported skill assertions.
+    \item \textbf{FR-04: Behavioral STAR Assessment Engine}: The system must evaluate candidate behavioral submissions using structured Situation, Task, Action, Result (STAR) response metrics.
+    \item \textbf{FR-05: GitHub Repository Forensic Interrogation}: The system must connect to GitHub REST/GraphQL APIs, verify commit author email matching, enforce a minimum commit authorship threshold ($\ge 30\%$), and detect bulk-import anomalies ($\Delta t < 600\text{ s}$).
+    \item \textbf{FR-06: Two-Phase Computerized Adaptive Testing (CAT)}: The platform must administer a Phase 1 calibration test followed by an enforced Purgatory intermission (5--15 minutes) and a Phase 2 scenario debugging assessment.
+    \item \textbf{FR-07: Question Quality Bias Elimination}: The system must execute a 3-pass LLM question generation pipeline enforcing distractor length ratios ($R_{len} \le 0.15$) and tech jargon parity ($R_{jargon} \in [0.70, 1.30]$).
+    \item \textbf{FR-08: Multi-Factor Forensic Trust Computation}: The system must calculate a normalized Forensic Trust Score ($S_{trust} \in [0, 100]$) incorporating tab-switching telemetry, trap question performance, and explicit fraud penalties.
+    \item \textbf{FR-09: Policy-Driven Recruiter Decision \& Ranking}: The system must evaluate candidate capability vectors against customizable organizational hiring policies (\textit{Startup}, \textit{Enterprise}, \textit{Intern}, \textit{Senior}) to generate verifiable recommendations.
+\end{enumerate}
 
 \section{Non-Functional Requirements}
 \begin{itemize}
@@ -201,40 +223,38 @@ VeriProof establishes a verifiable, evidence-driven proof-of-skill evaluation pa
 \section{Hardware Requirements}
 \begin{itemize}
     \item \textbf{Client Device}: Workstation/Laptop equipped with a multi-core processor (Intel Core i5 / AMD Ryzen 5 or higher).
-    \item \textbf{RAM}: Minimum 8 GB DDR4 RAM (16 GB recommended for concurrent application execution).
+    \item \textbf{RAM}: Minimum 8 GB DDR4 RAM (16 GB recommended for concurrent video processing).
     \item \textbf{Storage}: Minimum 256 GB SSD with at least 20 GB of free storage.
     \item \textbf{Display}: 14" or 15" display with 1920 $\times$ 1080 Full HD resolution.
-    \item \textbf{Peripherals}: Standard keyboard, pointing device (mouse/trackpad), and an integrated/external webcam for identity verification snapshots.
-    \item \textbf{Network Connectivity}: Broadband internet connection ($\ge 5\text{ Mbps}$) for secure HTTPS communication and real-time event telemetry.
+    \item \textbf{Peripherals}: Standard keyboard, pointing device (mouse/trackpad), and an integrated/external HD webcam (minimum 720p at 30 fps).
+    \item \textbf{Network Connectivity}: Broadband internet connection ($\ge 10\text{ Mbps}$) with low jitter for real-time telemetry streaming.
 \end{itemize}
 
 \section{Software Requirements}
+The software ecosystem supporting the platform comprises:
 \begin{itemize}
-    \item \textbf{Operating System}: Windows 10/11 (64-bit), Ubuntu Linux 22.04 LTS, or macOS Sonoma.
-    \item \textbf{Execution Environment}: Node.js (v20.x LTS or higher) JavaScript runtime environment.
-    \item \textbf{Frontend Stack}: React 18, Vite build tooling, Tailwind CSS, Framer Motion, and Lucide-React.
-    \item \textbf{Backend Stack}: Express.js REST API framework, Mongoose ODM, JsonWebToken, and Multer streaming parser.
-    \item \textbf{Database Architecture}: MongoDB Atlas clustered NoSQL cloud database (v7.0+).
-    \item \textbf{Machine Learning \& AI Services}: Google Gemini Generative AI SDK (@google/generative-ai) utilizing Gemini 2.5 Flash, GitHub REST/GraphQL APIs, and Cloudinary media SDK.
-    \item \textbf{Developer Tooling}: Visual Studio Code, Git, Postman API client, and modern Chromium-based web browsers.
+    \item \textbf{Operating System}: Ubuntu Linux 22.04 LTS or Windows 11 Pro (WSL2).
+    \item \textbf{Client Presentation Layer}: React 18 / 19, Vite, Tailwind CSS v4, Lucide Icons, Framer Motion.
+    \item \textbf{API Gateway \& Session Runtime}: Node.js LTS (v20.x+), Express.js 5, Mongoose ODM v8, JsonWebToken, bcryptjs.
+    \item \textbf{Analytical Intelligence Runtime}: Python 3.11+, FastAPI framework, Uvicorn ASGI server, Pydantic v2 strict data validation, and PyPDF.
+    \item \textbf{Database Persistence}: MongoDB Atlas distributed clustered NoSQL document store.
+    \item \textbf{AI Inference SDK}: Google Generative AI SDK targeting `gemini-2.5-flash` and `gemini-3.5-flash`.
 \end{itemize}
 
 \section{Feasibility Analysis}
-The technical feasibility of the VeriProof platform is verified through the production performance of the pure MERN architecture paired with low-latency structured JSON generation via Google Gemini APIs. Operational feasibility is demonstrated by eliminating upfront manual resume screening and isolating authentic code authors from proxy submissions. Economic feasibility is established through zero licensing fees for the open-source foundational stack (Node.js, React, Express, and MongoDB Community/Atlas tier) combined with lightweight pay-per-token cloud serverless operations.
+The technical feasibility of the VeriProof platform is verified through the production performance of the MERN architecture paired with low-latency structured JSON generation via Google Gemini APIs. Operational feasibility is demonstrated by eliminating upfront manual resume screening and isolating authentic code authors from proxy submissions. Economic feasibility is established through zero licensing fees for the open-source foundational stack (Node.js, React, Express, MongoDB Community/Atlas tier, and Python) combined with lightweight pay-per-token cloud serverless operations.
 
 \section{Data Collection and Domains}
-The platform's evaluation pipeline dynamically aligns with recruiter requirements by parsing unstructured Job Descriptions (JDs) to extract targeted technical domains, required seniority, and competency benchmarks. Rather than enforcing a static, one-size-fits-all examination syllabus, the system extracts two primary semantic vectors from each role specification:
+The platform's verification and assessment taxonomy is engineered to evaluate competencies across the broader Computer Science and Engineering (CSE) curriculum and industry technical tracks, including:
 \begin{enumerate}
-    \item \textbf{Core Skills Vector}: The mandatory languages, libraries, and frameworks required for baseline technical execution (e.g., Node.js, React, PostgreSQL, Docker).
-    \item \textbf{Project Context Vector}: Real-world architectural responsibilities, scalability challenges, and failure modes specific to the hiring team's production environment.
+    \item \textbf{Software Development \& Architecture}: Full-stack web, mobile platforms, enterprise systems, and testing pipelines.
+    \item \textbf{Cybersecurity \& Information Assurance}: Application security, network defense, penetration testing, cryptography, and digital forensics.
+    \item \textbf{Cloud Infrastructure \& DevOps}: Distributed systems, container orchestration, microservices, and CI/CD automation.
+    \item \textbf{Data Engineering \& Storage Systems}: Relational architectures, distributed NoSQL stores, and big data pipelines.
+    \item \textbf{Artificial Intelligence \& Machine Learning}: Applied ML algorithms, deep learning models, natural language processing, and Generative AI pipelines.
+    \item \textbf{Specialized Systems}: Embedded systems, Internet of Things (IoT), and decentralized blockchain architectures.
 \end{enumerate}
-
-To structure Phase 1 calibration question pools, the platform dynamically instantiates skill calibration vectors directly from the parsed Job Description rather than enforcing rigid, static academic subjects. While the engine references a comprehensive software engineering taxonomy across core engineering paradigms (Frontend UI architecture, Distributed Backend mechanics, Database/NoSQL persistence, and Core Programming algorithms), the actual question pool is synthesized, difficulty-tiered, and weighted in real time according to the specific job role's technical priorities and production stack.
-
-In parallel with dynamic JD ingestion, empirical candidate data is collected directly from candidate-linked public GitHub repositories. Automated background services extract up to 100 historical commits, evaluating author email metadata, contribution distributions over time, and programming language distributions. Finally, Abstract Syntax Tree (AST) static analysis verifies code claims by matching asserted technical competencies against actual syntactic construct implementations, identifying cloned starter templates and bulk-imported tutorial codebases before examination deployment.
-
-\clearpage
-
+By parsing recruiter Job Descriptions into targeted domain vectors, the platform dynamically activates the appropriate competency evaluations tailored to the specified technical role.
 % ==============================================================================
 % CHAPTER 4: SYSTEM DESIGN AND METHODOLOGY
 % ==============================================================================
@@ -264,6 +284,7 @@ The platform comprises four interconnected layers:
     \end{itemize}
     \item \textbf{Persistence \& Cloud Storage Layer}: MongoDB Atlas document store preserving users, exams, question banks, and audit logs, coupled with Cloudinary for verified media storage.
 \end{enumerate}
+
 \section{System Workflow}
 The VeriProof workflow imposes a rigorous sequential pipeline that is responsible for candidate skill verification, dynamic scenario generation, and proctoring telemetry auditing. Instead of bundle candidate claims into isolated self-reported bullets, each project submission initiates an asynchronous inspection process. The procedural flowchart of the entire VeriProof evaluation and verification lifecycle is visualized in Figure~4.2. The evaluation lifecycle proceeds through the following phases:
 
@@ -282,31 +303,27 @@ The VeriProof workflow imposes a rigorous sequential pipeline that is responsibl
     \item \textbf{Session Logout}: The session is securely closed and unalterable audit logs are written into MongoDB.
 \end{enumerate}
 
-\section{Module Description}
-\subsection{Module 1: Authentication and Session Security}
-Enforces cryptographic identity verification using bcrypt password salting, JSON Web Tokens with configurable expiration, and role-based route guards (`candidate`, `recruiter`, `admin`).
+\section{Mathematical Model}
+\subsection{Multi-Factor Capability Score Formulation}
+$$\text{Score}_{\text{capability}} = w_{\text{cov}} \cdot C + w_{\text{depth}} \cdot D + w_{\text{comp}} \cdot X + w_{\text{rel}} \cdot R + w_{\text{cons}} \cdot K$$
+where normalized weights default to:
+$$w_{\text{cov}} = 0.20, \quad w_{\text{depth}} = 0.20, \quad w_{\text{comp}} = 0.15, \quad w_{\text{rel}} = 0.20, \quad w_{\text{cons}} = 0.15$$
 
-\subsection{Module 2: GitHub Repository Intelligence}
-Connects to GitHub REST/GraphQL APIs, verifies that commit email addresses match candidate accounts, inspects code repository structure, and calculates commit frequency consistency over time.
-
-\subsection{Module 3: Question Quality Pipeline (LLM Bias Elimination)}
-A 3-pass generative AI engine that prevents common LLM artifacts:
+\subsection{Composite Trust Score Formulation}
+$$\text{WeightedSum} = \sum_{m} \left( S_m \cdot W_m \right)$$
+where default engine weights are:
 \begin{itemize}
-    \item \textbf{Pass 1}: Generates scenario description and correct answer without distractors.
-    \item \textbf{Pass 2}: Generates adversarial distractors length-matched within $\pm$15\%, jargon-matched, and hedging-matched.
-    \item \textbf{Pass 3}: Code-based quality gates verifying distractor plausibility and randomizing answer positions (A, B, C, D).
+    \item Capability Score ($W_1 = 0.25$)
+    \item Competency Score ($W_2 = 0.20$)
+    \item Evidence Reliability ($W_3 = 0.15$)
+    \item Repo Code Reliability ($W_4 = 0.15$)
+    \item Technical Assessment ($W_5 = 0.15$)
+    \item Behavioral Assessment ($W_6 = 0.10$)
 \end{itemize}
 
-\subsection{Module 4: Adaptive Exam Controller \& Purgatory Timebox}
-Orchestrates the 2-part split architecture:
-\begin{itemize}
-    \item Executes Phase 1 calibration across job description skills.
-    \item Enforces the hard Purgatory countdown timer preventing unauthorized intermission research.
-    \item Synthesizes Phase 2 scenario items targeted directly at candidate skill gaps.
-\end{itemize}
-
-\subsection{Module 5: Dynamic Skill Tree \& Recruiter Hub}
-Renders an interactive DAG visualization showing unlocked skill milestones, experience points (XP), competency tiers, and exportable forensic dossiers.
+Categorical fraud penalties are computed as:
+$$\text{TotalPenalty} = (15.0 \times N_{\text{contradictions}}) + (5.0 \times N_{\text{missing\_sources}}) + P_{\text{fork}} + P_{\text{plagiarism}}$$
+$$\text{FinalTrustScore} = \max\left(0.0, \, \min\left(100.0, \, \text{WeightedSum} - \text{TotalPenalty}\right)\right)$$
 
 \section{Proposed Methodology / Algorithm}
 The candidate Skill DNA classification algorithm computes empirical proficiency vectors across all evaluated technical domains:
@@ -332,20 +349,26 @@ Advanced / Expert, & \text{if } Accuracy\_k \ge 0.75 \text{ and } TrapFailed\_k 
 \end{equation}
 
 \section{Mathematical Model}
-\subsection{Forensic Trust Score Formulation}
-The composite Forensic Trust Score ($S_{trust} \in [0, 100]$) quantifies candidate honesty and exam integrity:
+\subsection{Multi-Factor Capability Score Formulation}
+$$\text{Score}_{\text{capability}} = w_{\text{cov}} \cdot C + w_{\text{depth}} \cdot D + w_{\text{comp}} \cdot X + w_{\text{rel}} \cdot R + w_{\text{cons}} \cdot K$$
+where normalized weights default to:
+$$w_{\text{cov}} = 0.20, \quad w_{\text{depth}} = 0.20, \quad w_{\text{comp}} = 0.15, \quad w_{\text{rel}} = 0.20, \quad w_{\text{cons}} = 0.15$$
 
-\begin{equation}
-S_{trust} = 100 - [ w_1 \cdot \min(N_{tab}, 10) + w_2 \cdot N_{trap} + w_3 \cdot \Delta_{conf} + w_4 \cdot G_{flag} ]
-\end{equation}
-
-where:
+\subsection{Composite Trust Score Formulation}
+$$\text{WeightedSum} = \sum_{m} \left( S_m \cdot W_m \right)$$
+where default engine weights are:
 \begin{itemize}
-    \item $N_{tab}$ is the count of window blur and browser tab switch events ($w_1 = 2.5$).
-    \item $N_{trap}$ is the number of deceptive trap questions failed ($w_2 = 18.0$).
-    \item $\Delta_{conf}$ is the confidence calibration penalty for incorrect high-confidence answers ($w_3 = 5.0$).
-    \item $G_{flag}$ is the binary guess detection penalty ($w_4 = 10.0$) triggered when median answer time on complex items is under 3.0 seconds.
+    \item Capability Score ($W_1 = 0.25$)
+    \item Competency Score ($W_2 = 0.20$)
+    \item Evidence Reliability ($W_3 = 0.15$)
+    \item Repo Code Reliability ($W_4 = 0.15$)
+    \item Technical Assessment ($W_5 = 0.15$)
+    \item Behavioral Assessment ($W_6 = 0.10$)
 \end{itemize}
+
+Categorical fraud penalties are computed as:
+$$\text{TotalPenalty} = (15.0 \times N_{\text{contradictions}}) + (5.0 \times N_{\text{missing\_sources}}) + P_{\text{fork}} + P_{\text{plagiarism}}$$
+$$\text{FinalTrustScore} = \max\left(0.0, \, \min\left(100.0, \, \text{WeightedSum} - \text{TotalPenalty}\right)\right)$$
 
 \subsection{Question Quality Gate Ratios}
 To prevent LLM telltale biases, distractors must satisfy strict mathematical thresholds:
